@@ -22,7 +22,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`) VALUES
 (3, 'thuyen', 'thuyen@mail.com', '$2y$10$KRXGkY.dxYjD8FLZclW/Tu04wl76lD7IA4Z3nAsxtpdZxHNbYo4ZW'),
 (4, 'tuan', 'tuan@mail.com', '$2y$10$KRXGkY.dxYjD8FLZclW/Tu04wl76lD7IA4Z3nAsxtpdZxHNbYo4ZW'),
 (5, 'hung', 'hung@gmail.com', '$2y$10$WYgRxBC25DaEaK7cFHGmVOkCt0xwazEp39LnKxeHqVciMmz66Akuy');
-
+-- drop table `users`
 CREATE TABLE `flight` (
   `flight_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL,
@@ -64,7 +64,6 @@ INSERT INTO `flight` (`flight_id`, `admin_id`, `thoidiem_den`, `thoidiem_di`, `d
 
 -- DROP TABLE `flight`;
 
-
 CREATE TABLE `airline` (
   `airline_id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
@@ -104,6 +103,8 @@ INSERT INTO `cities` (`city`) VALUES
 ('Kien Giang'),
 ('Thua Thien Hue');
 
+-- drop table `cities`;
+
 CREATE TABLE `thong_tin_hanh_khach` (
   `hanh_khach_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -123,7 +124,13 @@ INSERT INTO `thong_tin_hanh_khach` (`hanh_khach_id`, `user_id`, `flight_id`, `so
 (5, 2, 8, '7854444411', '1995-02-13 00:00:00', 'Hoang', 'Viet', 'Cuong'),
 (6, 2, 20, '7412585555', '1995-02-13 00:00:00', 'Tran', 'Khanh', 'Ngoc'),
 (7, 5, 1, '7894567894', '2004-06-02 00:00:00', 'Do', 'Thuy', 'Dung'),
-(8, 5, 1, '7894561274', '2003-06-02 00:00:00', 'Duong', 'Thanh', 'An');
+(8, 5, 1, '7894561274', '2003-06-02 00:00:00', 'Duong', 'Thanh', 'An'),
+(9, 1, 15, '2147653256', '2000-12-02 00:00:00', 'Do', 'Thuy', 'Dung'),
+(10, 2, 1, '2147653257', '1997-06-02 00:00:00', 'Nguyen', 'Danh', 'Dat'),
+(11, 3, 1, '2147653258', '1977-06-16 00:00:00', 'Do', 'Duc', 'Nam'),
+(12, 4, 1, '2147653259', '1992-09-18 00:00:00', 'Can', 'Duy', 'Hung');
+
+-- drop table `thong_tin_hanh_khach`
 
 CREATE TABLE `ticket` (
   `ticket_id` int(11) NOT NULL,
@@ -143,10 +150,41 @@ INSERT INTO `ticket` (`ticket_id`, `hanh_khach_id`, `flight_id`, `user_id`, `cho
 (5, 5, 8, 2, '21A', 4000, 'E'),
 (6, 6, 20, 2, '21A', 900, 'E'),
 (7, 7, 1, 5, '21C', 500, 'E'),
-(8, 8, 1, 5, '21D', 500, 'E');
+(8, 8, 1, 5, '21D', 500, 'E'),
+(9, 9, 15, 1, '21B', 600, 'E'),
+(10, 10, 14, 3, '21B', 400, 'E'),
+(11, 11, 13, 5, '21C', 450, 'E'),
+(12, 12, 17, 4, '21B', 500, 'E');
 
 -- drop table `ticket`;
 
+CREATE TABLE `payment` (
+  `so_the` varchar(16) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `flight_id` int(11) NOT NULL,
+  `han_su_dung` varchar(5) DEFAULT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+
+INSERT INTO `payment` (`so_the`, `user_id`, `flight_id`, `han_su_dung`, `amount`) VALUES
+('1010555677851111', 4, 2, '10/26', 370),
+('1020445869651011', 2, 20, '12/25', 370),
+('1111888889897778', 2, 3, '12/25', 205),
+('1400565800004478', 2, 8, '12/25', 1230),
+('14567894561234', 5, 1, '12/26', 175),
+('1458799990001450', 3, 2, '12/25', 185),
+('4204558500014587', 1, 1, '02/25', 350),
+('764561234894561', 5, 1, '07/26', 175);
+
+-- drop table `payment`
+
+CREATE TABLE `pwdreset` (
+  `pwd_reset_id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `token` varchar(120) NOT NULL,
+  `mat_khau_het_han` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
