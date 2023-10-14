@@ -9,6 +9,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 -- CREATE DATABASE ban_ve_may_bay;
+
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
@@ -25,7 +26,6 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`) VALUES
 -- drop table `users`
 CREATE TABLE `flight` (
   `flight_id` int(11) NOT NULL,
-  `admin_id` int(11) NOT NULL,
   `thoidiem_den` datetime NOT NULL,
   `thoidiem_di` datetime NOT NULL,
   `diem_xuatphat` varchar(50) NOT NULL,
@@ -39,28 +39,28 @@ CREATE TABLE `flight` (
   `so_ghe_hang_thuong_gia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO `flight` (`flight_id`, `admin_id`, `thoidiem_den`, `thoidiem_di`, `diem_xuatphat`, `diem_den`, `hang_bay`, `so_ghe_da_dat`, `tong_thoi_gian`, `gia_ve`, `trang_thai`, `ghi_chu`, `so_ghe_hang_thuong_gia`) VALUES
-(1, 1, '2023-08-05 00:03:00', '2023-08-04 23:05:00', 'Ha Noi', 'Da Nang', 'VietNam Airlines', '100', '1', 500, 'Delayed', '', 20),
-(2, 1, '2023-08-04 11:15:00', '2023-08-04 10:05:00', 'Ha Noi', 'Hai Phong', 'Vietjet Air', '120', '1', 185, 'On Time', '', 20),
-(3, 1, '2023-08-05 12:13:00', '2023-08-05 10:13:00', 'Ha Noi', 'Nghe An', 'VietNam Airlines', '90', '2', 350, 'On Time', '', 20),
-(4, 1, '2023-08-10 16:30:00', '2023-08-10 15:26:00', 'Da Nang', 'Nghe An', 'VietNam Airlines', '70', '1', 250, 'Delayed', '', 20),
-(5, 1, '2023-08-10 15:30:00', '2023-08-10 12:30:00', 'TP Ho Chi Minh', 'Ha Noi', 'Vietjet Air', '80', '3', 1000, 'On Time', '', 20),
-(6, 1, '2023-08-10 17:55:00', '2023-08-10 15:30:00', 'Nghe An', 'TP Ho Chi Minh', 'VietNam Airlines', '90', '2', 600, 'On Time', '', 20),
-(7, 1, '2023-08-10 20:50:00', '2023-08-10 18:50:00', 'TP Ho Chi Minh', 'Da Nang', 'Bamboo Airways', '80', '2', 500, 'On Time', '', 20),
-(8, 1, '2023-08-11 00:55:00', '2023-08-10 17:00:00', 'BangKok', 'Ha Noi', 'Bamboo Airways', '85', '7', 2000, 'On Time', '', 20),
-(9, 1, '2023-08-10 17:09:00', '2023-08-10 16:05:00', 'Hai Phong', 'Da Nang', 'VietNam Airlines', '71', '1', 300, 'On Time', '', 20),
-(10, 1, '2023-08-11 13:10:00', '2023-08-11 11:05:00', 'Quang Binh', 'Quang Nam', 'Vietjet Air', '83', '2', 200, 'On Time', '', 20),
-(11, 1, '2023-08-11 19:10:00', '2023-08-11 18:05:00', 'Quang Binh', 'Thua Thien Hue', 'Bamboo Airways', '97', '1', 300, 'On Time', '', 20),
-(12, 1, '2023-08-11 21:10:00', '2023-08-11 19:05:00', 'Thua Thien Hue', 'TP Ho Chi Minh', 'Vietstar Airlines', '100', '2', 900, 'Delayed', '', 20),
-(13, 1, '2023-08-11 13:50:00', '2023-08-11 12:56:03', 'Dien Bien', 'Dak Lak', 'Viettravel Airlines', '111', '1', 450, 'On Time', '', 20),
-(14, 1, '2023-08-11 11:08:00', '2023-08-11 09:07:00', 'Dak Lak', 'Gia Lai', 'Vietstar Airlines', '69', '2', 400, 'On Time', '', 20),
-(15, 1, '2023-08-11 10:10:00', '2023-08-11 08:10:00', 'Khanh Hoa', 'Kien Giang', 'VietNam Airlines', '77', '2', 300, 'Delayed', '', 20),
-(16, 1, '2023-08-11 18:10:00', '2023-08-11 16:09:00', 'Gia Lai', 'Lam Dong', 'Vietstar Airlines', '80', '2', 400, 'On Time', '', 20),
-(17, 1, '2023-08-11 17:10:00', '2023-08-11 16:10:00', 'Thanh Hoa', 'Quang Ninh', 'Viettravel Airlines', '69', '1', 500, 'Delayed', '', 20),
-(18, 1, '2023-08-11 19:15:00', '2023-08-11 16:12:00', 'Thanh Hoa', 'Lam Dong', 'Vietjet Air', '78', '3', 400, 'On Time', '', 20),
-(19, 1, '2023-08-11 23:40:00', '2023-08-11 20:31:00', 'Quang Ninh', 'Dak Lak', 'VietNam Airlines', '98', '3', 500, 'On Time', '', 20),
-(20, 1, '2023-08-11 23:58:00', '2023-08-11 22:14:00', 'TP Ho Chi Minh', 'Ca Mau', 'Viettravel Airlines', '88', '1', 450, 'Delayed', '', 20),
-(21, 1, '2023-08-11 10:14:00', '2023-08-11 9:15:04', 'Ca Mau', 'Can Tho', 'VietNam Airlines', '66', '1', 300, 'On Time', '', 20);
+INSERT INTO `flight` (`flight_id`, `thoidiem_den`, `thoidiem_di`, `diem_xuatphat`, `diem_den`, `hang_bay`, `so_ghe_da_dat`, `tong_thoi_gian`, `gia_ve`, `trang_thai`, `ghi_chu`, `so_ghe_hang_thuong_gia`) VALUES
+(1, '2023-08-05 00:03:00', '2023-08-04 23:05:00', 'Ha Noi', 'Da Nang', 'VietNam Airlines', '100', '1', 500, 'Delayed', '', 20),
+(2, '2023-08-04 11:15:00', '2023-08-04 10:05:00', 'Ha Noi', 'Hai Phong', 'Vietjet Air', '120', '1', 185, 'On Time', '', 20),
+(3, '2023-08-05 12:13:00', '2023-08-05 10:13:00', 'Ha Noi', 'Nghe An', 'VietNam Airlines', '90', '2', 350, 'On Time', '', 20),
+(4, '2023-08-10 16:30:00', '2023-08-10 15:26:00', 'Da Nang', 'Nghe An', 'VietNam Airlines', '70', '1', 250, 'Delayed', '', 20),
+(5, '2023-08-10 15:30:00', '2023-08-10 12:30:00', 'TP Ho Chi Minh', 'Ha Noi', 'Vietjet Air', '80', '3', 1000, 'On Time', '', 20),
+(6, '2023-08-10 17:55:00', '2023-08-10 15:30:00', 'Nghe An', 'TP Ho Chi Minh', 'VietNam Airlines', '90', '2', 600, 'On Time', '', 20),
+(7, '2023-08-10 20:50:00', '2023-08-10 18:50:00', 'TP Ho Chi Minh', 'Da Nang', 'Bamboo Airways', '80', '2', 500, 'On Time', '', 20),
+(8, '2023-08-11 00:55:00', '2023-08-10 17:00:00', 'BangKok', 'Ha Noi', 'Bamboo Airways', '85', '7', 2000, 'On Time', '', 20),
+(9, '2023-08-10 17:09:00', '2023-08-10 16:05:00', 'Hai Phong', 'Da Nang', 'VietNam Airlines', '71', '1', 300, 'On Time', '', 20),
+(10, '2023-08-11 13:10:00', '2023-08-11 11:05:00', 'Quang Binh', 'Quang Nam', 'Vietjet Air', '83', '2', 200, 'On Time', '', 20),
+(11, '2023-08-11 19:10:00', '2023-08-11 18:05:00', 'Quang Binh', 'Thua Thien Hue', 'Bamboo Airways', '97', '1', 300, 'On Time', '', 20),
+(12, '2023-08-11 21:10:00', '2023-08-11 19:05:00', 'Thua Thien Hue', 'TP Ho Chi Minh', 'Vietstar Airlines', '100', '2', 900, 'Delayed', '', 20),
+(13, '2023-08-11 13:50:00', '2023-08-11 12:56:03', 'Dien Bien', 'Dak Lak', 'Viettravel Airlines', '111', '1', 450, 'On Time', '', 20),
+(14, '2023-08-11 11:08:00', '2023-08-11 09:07:00', 'Dak Lak', 'Gia Lai', 'Vietstar Airlines', '69', '2', 400, 'On Time', '', 20),
+(15, '2023-08-11 10:10:00', '2023-08-11 08:10:00', 'Khanh Hoa', 'Kien Giang', 'VietNam Airlines', '77', '2', 300, 'Delayed', '', 20),
+(16, '2023-08-11 18:10:00', '2023-08-11 16:09:00', 'Gia Lai', 'Lam Dong', 'Vietstar Airlines', '80', '2', 400, 'On Time', '', 20),
+(17, '2023-08-11 17:10:00', '2023-08-11 16:10:00', 'Thanh Hoa', 'Quang Ninh', 'Viettravel Airlines', '69', '1', 500, 'Delayed', '', 20),
+(18, '2023-08-11 19:15:00', '2023-08-11 16:12:00', 'Thanh Hoa', 'Lam Dong', 'Vietjet Air', '78', '3', 400, 'On Time', '', 20),
+(19, '2023-08-11 23:40:00', '2023-08-11 20:31:00', 'Quang Ninh', 'Dak Lak', 'VietNam Airlines', '98', '3', 500, 'On Time', '', 20),
+(20, '2023-08-11 23:58:00', '2023-08-11 22:14:00', 'TP Ho Chi Minh', 'Ca Mau', 'Viettravel Airlines', '88', '1', 450, 'Delayed', '', 20),
+(21, '2023-08-11 10:14:00', '2023-08-11 9:15:04', 'Ca Mau', 'Can Tho', 'VietNam Airlines', '66', '1', 300, 'On Time', '', 20);
 
 -- DROP TABLE `flight`;
 
@@ -158,26 +158,6 @@ INSERT INTO `ticket` (`ticket_id`, `hanh_khach_id`, `flight_id`, `user_id`, `cho
 
 -- drop table `ticket`;
 
-CREATE TABLE `payment` (
-  `so_the` varchar(16) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `flight_id` int(11) NOT NULL,
-  `han_su_dung` varchar(5) DEFAULT NULL,
-  `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
-
-INSERT INTO `payment` (`so_the`, `user_id`, `flight_id`, `han_su_dung`, `amount`) VALUES
-('1010555677851111', 4, 2, '10/26', 370),
-('1020445869651011', 2, 20, '12/25', 370),
-('1111888889897778', 2, 3, '12/25', 205),
-('1400565800004478', 2, 8, '12/25', 1230),
-('14567894561234', 5, 1, '12/26', 175),
-('1458799990001450', 3, 2, '12/25', 185),
-('4204558500014587', 1, 1, '02/25', 350),
-('764561234894561', 5, 1, '07/26', 175);
-
--- drop table `payment`
 
 CREATE TABLE `pwdreset` (
   `pwd_reset_id` int(11) NOT NULL,
@@ -185,6 +165,16 @@ CREATE TABLE `pwdreset` (
   `token` varchar(120) NOT NULL,
   `mat_khau_het_han` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+
+--
+-- Indexes for table `airline`
+--
+ALTER TABLE `airline`
+  ADD PRIMARY KEY (`airline_id`);
+  
+ ALTER TABLE `flight`
+ add PRIMARY KEY (`flight_id`) ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
