@@ -8,21 +8,22 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
--- CREATE DATABASE ban_ve_may_bay;
-
+ CREATE DATABASE ban_ve_may_bay;
+use ban_ve_may_bay;
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
+  `user_id` int(11) auto_increment primary key,
+  `username` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`) VALUES
-(1, 'vuong', 'vuong@mail.com', '$2y$10$KRXGkY.dxYjD8FLZclW/Tu04wl76lD7IA4Z3nAsxtpdZxHNbYo4ZW'),
-(2, 'duong', 'duong@mail.com', '$2y$10$KRXGkY.dxYjD8FLZclW/Tu04wl76lD7IA4Z3nAsxtpdZxHNbYo4ZW'),
-(3, 'thuyen', 'thuyen@mail.com', '$2y$10$KRXGkY.dxYjD8FLZclW/Tu04wl76lD7IA4Z3nAsxtpdZxHNbYo4ZW'),
-(4, 'tuan', 'tuan@mail.com', '$2y$10$KRXGkY.dxYjD8FLZclW/Tu04wl76lD7IA4Z3nAsxtpdZxHNbYo4ZW'),
-(5, 'hung', 'hung@gmail.com', '$2y$10$WYgRxBC25DaEaK7cFHGmVOkCt0xwazEp39LnKxeHqVciMmz66Akuy');
+(1, 'vuong', 'vuong@mail.com', '123456'),
+(2, 'duong','duong@mail.com', '123456'),
+(3, 'thuyen', 'thuyen@mail.com', '123456'),
+(4, 'ngoc' ,'ngoc@mail.com', '123456'),
+(5, 'hung' , 'hung@gmail.com', '123456');
+
 -- drop table `users`
 CREATE TABLE `flight` (
   `flight_id` int(11) NOT NULL,
@@ -170,11 +171,6 @@ CREATE TABLE `pwdreset` (
 --
 -- Indexes for table `airline`
 --
-ALTER TABLE `airline`
-  ADD PRIMARY KEY (`airline_id`);
-  
- ALTER TABLE `flight`
- add PRIMARY KEY (`flight_id`) ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
