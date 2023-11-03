@@ -9,6 +9,11 @@
   </head>
   <body>
     <div class="container-fluid">
+        <?php
+
+        ?>
+
+        <form action="menu.php" method = "post"></form>
       <div class="row">
         <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center; color : red;">
           <strong>WARNING! : 16 Tháng 10 2023, 23:00 GMT+7: </strong> Thay đổi kế hoạch khai thác tại các sân bay khu vực Bắc Trung Bộ và Trung Trung Bộ <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -31,20 +36,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Lên kế hoạch </a>
-                      <ul class="dropdown-content">
-                        <li>
-                          <a class="dropdown-item" href="#">TP HCM</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Hà Nội</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Đà Nẵng</a>
-                        </li>
-                      </ul>
-                    </li>
+
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Thông tin hành trình </a>
                       <ul class="dropdown-content">
@@ -72,21 +64,7 @@
                           <a class="dropdown-item" href="#">Something else here</a>
                         </li>
                       </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tiện ích thương gia </a>
-                      <ul class="dropdown-content">
-                        <li>
-                          <a class="dropdown-item" href="#">Action</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                      </ul>
-                    </li>
+                    </li> 
                   </ul>
                 </div>
               </div>

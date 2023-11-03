@@ -31,20 +31,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Lên kế hoạch </a>
-                      <ul class="dropdown-content">
-                        <li>
-                          <a class="dropdown-item" href="#">TP HCM</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Hà Nội</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Đà Nẵng</a>
-                        </li>
-                      </ul>
-                    </li>
+
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Thông tin hành trình </a>
                       <ul class="dropdown-content">
@@ -72,21 +59,7 @@
                           <a class="dropdown-item" href="#">Something else here</a>
                         </li>
                       </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tiện ích thương gia </a>
-                      <ul class="dropdown-content">
-                        <li>
-                          <a class="dropdown-item" href="#">Action</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                      </ul>
-                    </li>
+                    </li> 
                   </ul>
                 </div>
               </div>
