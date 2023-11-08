@@ -59,7 +59,7 @@
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Mua vé và sản phẩm khác </a>
                       <ul class="dropdown-content">
                         <li>
-                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="timve.php">Mua ve</a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#">Another action</a>
