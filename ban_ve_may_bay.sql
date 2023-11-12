@@ -116,3 +116,27 @@ CREATE TABLE Booking (
   FOREIGN KEY (TravelClassID) REFERENCES TravelClass(TravelClassID) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `cities` (
+  `city` varchar(111) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `cities` (`city`) VALUES
+('Hà Nội'),
+('Đà Nẵng'),
+('Nghệ An'),
+('BangKok'),
+('Quảng Nam'),
+('Quảng Bình'),
+('Khánh Hòa'),
+('Lâm Đồng'),
+('Gia Lai'),
+('Điện Biên'),
+('Đắk Lắk'),
+('Quảng Ninh'),
+('Thanh Hóa'),
+('Cà Mau'),
+('Cần Thơ'),
+('TP. Hồ Chí Minh'),
+('Kiên Giang'),
+('Thừa Thiên Huế');
