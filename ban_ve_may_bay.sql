@@ -37,6 +37,7 @@ CREATE TABLE Passenger (
 
 CREATE TABLE Flight (
   FlightID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  hinhanh varchar(100) not null, 
   thoidiem_den datetime NOT NULL,
   thoidiem_di datetime NOT NULL,
   diem_xuatphat varchar(50) NOT NULL,
@@ -44,18 +45,17 @@ CREATE TABLE Flight (
   tong_thoi_gian varchar(20) NOT NULL,
   gia_ve int(11) NOT NULL,
   trang_thai varchar(20) DEFAULT NULL,
-  ghi_chu varchar(50) DEFAULT NULL
+  ghi_chu varchar(50) DEFAULT NULL, 
+  id_danhmuc int not null 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  COLLATE=utf8mb4_unicode_ci;
 
 
 -- loại vé như khứ hồi, 1 chiều  
-CREATE TABLE TicketType (
-  TicketTypeID INT AUTO_INCREMENT PRIMARY KEY,
-  TicketTypeCode VARCHAR(255) NOT NULL 
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-INSERT INTO TicketType (TicketTypeCode) VALUES 
-('Một chiều'),
-('Khứ hồi');
+CREATE TABLE `tbl_danhmuc` (
+  `id_danhmuc` int NOT NULL,
+  `tendanhmuc` varchar(100) NOT NULL,
+  `thutu` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- phương thức thanh toán: ATM, QR, Thẻ tín dụng
 CREATE TABLE PaymentMethod (
