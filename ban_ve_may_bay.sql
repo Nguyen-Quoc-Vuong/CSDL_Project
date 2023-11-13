@@ -54,7 +54,7 @@ CREATE TABLE Flight (
 
 -- loại vé như khứ hồi, 1 chiều  
 CREATE TABLE `tbl_danhmuc` (
-  `id_danhmuc` int NOT NULL,
+  `id_danhmuc` int NOT NULL primary  key,
   `tendanhmuc` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -110,13 +110,13 @@ CREATE TABLE Booking (
   BookingDate DATETIME NOT NULL,
   PassengerID INT NOT NULL,
   BookingStatusID INT NOT NULL,
-  TicketTypeID INT NOT NULL,
+  id_danhmuc INT NOT NULL,
   FlightID INT NOT NULL,
   TravelClassID INT NOT NULL,
   PaymentID INT NOT NULL,
   FOREIGN KEY (PassengerID) REFERENCES Passenger(PassengerID) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (BookingStatusID) REFERENCES     BookingStatus(BookingStatusID) ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (TicketTypeID) REFERENCES TicketType(TicketTypeID) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (id_danhmuc) REFERENCES tbl_danhmuc(id_danhmuc) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (FlightID) REFERENCES Flight(FlightID) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (TravelClassID) REFERENCES TravelClass(TravelClassID) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID) ON DELETE RESTRICT ON UPDATE CASCADE
