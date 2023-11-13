@@ -1,10 +1,4 @@
-<?php
-            session_start();
-            if (!isset($_SESSION["user"])) {
-              header("Location: login.php");
-           }
-        ?>
-        
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -88,6 +82,21 @@
     <link rel="stylesheet" href="../asset/css/timve.css">
         <h1>Book Your Flight</h1>
         <form method="post" action="muave.php">
+        <link rel="stylesheet" href="../asset/css/radiobtn.css">
+          <div class="radio-button-container">
+            <input type="radio" name="tickettype" value="Round Trip" id="round-trip-radio-button" checked="checked">
+            <label for="round-trip-radio-button" class="radio-button">Round Trip</label>
+
+            <input type="radio" name="tickettype" value="One Way" id="one-way-radio-button">
+            <label for="one-way-radio-button" class="radio-button">One Way</label>
+
+            <input type="radio" name="tickettype" value="Multiple Destinations" id="multiple-destinations-radio-button">
+            <label for="multiple-destinations-radio-button" class="radio-button">Multiple Destinations</label>
+          </div>
+
+
+
+
             <div class="row mb-3">
                 <div class="col">
                     <label for="departureCity">Departure City:</label>

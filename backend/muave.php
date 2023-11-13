@@ -32,19 +32,13 @@
         <div class="card">
           <div class="card-header">Flight Details</div>
           <div class="card-body">
-            <p>Flight Number: UA1234</p>
-            <p>Departure Airport: San Francisco International Airport (SFO)</p>
-            <p>Arrival Airport: New York John F. Kennedy International Airport (JFK)</p>
-            <p>Departure Date: 2023-11-10</p>
-            <p>Arrival Date: 2023-11-10</p>
-            <p>Departure Time: 10:00 AM</p>
-            <p>Arrival Time: 4:00 PM</p>
-            <p>Duration: 5 hours 0 minutes</p>
-            <p>Prices:</p>
-              <ul>
-                <li>Economy: $450.00</li>
-                <li>Business Class: $750.00</li>
-              </ul>
+
+          <?php
+            echo '<pre>';
+            print_r($_POST);
+            echo '</pre>'; 
+          ?>
+        
           </div>
         </div>
       </div>
@@ -77,8 +71,3 @@
 </html>
 
 <h1>Heading</h1>
-<?php
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>'; 
-?>
