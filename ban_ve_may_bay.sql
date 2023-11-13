@@ -55,9 +55,12 @@ CREATE TABLE Flight (
 -- loại vé như khứ hồi, 1 chiều  
 CREATE TABLE `tbl_danhmuc` (
   `id_danhmuc` int NOT NULL,
-  `tendanhmuc` varchar(100) NOT NULL,
-  `thutu` int NOT NULL
+  `tendanhmuc` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO tbl_danhmuc(id_danhmuc, tendanhmuc) VALUES
+(1, 'Một chiều'),
+(2, 'Khứ hồi');
 
 -- phương thức thanh toán: ATM, QR, Thẻ tín dụng
 CREATE TABLE PaymentMethod (
@@ -65,7 +68,7 @@ CREATE TABLE PaymentMethod (
   PaymentMethodCode VARCHAR(255) NOT NULL 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO TicketType (TicketTypeCode) VALUES 
+INSERT INTO PaymentMethod (PaymentMethodCode) VALUES 
 ('ATM'),
 ('QR'),
 ('Thẻ tín dụng');
@@ -76,7 +79,7 @@ CREATE TABLE PaymentStatus (
   PaymentStatusCode VARCHAR(255) NOT NULL 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO TicketType (TicketTypeCode) VALUES 
+INSERT INTO PaymentStatus (PaymentStatusCode) VALUES 
 ('Paid'),
 ('Partially Paid');
 
@@ -94,7 +97,7 @@ CREATE TABLE BookingStatus (
   BookingStatusID INT(11) AUTO_INCREMENT PRIMARY KEY,
   BookingStatusCode VARCHAR(255) NOT NULL 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-INSERT INTO TicketType (TicketTypeCode) VALUES 
+INSERT INTO BookingStatus (BookingStatusCode) VALUES 
 ('Pending'),
 ('Confirmed'),
 ('Cancelled'),
