@@ -56,7 +56,7 @@ CREATE TABLE Flight (
 CREATE TABLE `tbl_danhmuc` (
   `id_danhmuc` int NOT NULL,
   `tendanhmuc` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO tbl_danhmuc(id_danhmuc, tendanhmuc) VALUES
 (1, 'Một chiều'),
