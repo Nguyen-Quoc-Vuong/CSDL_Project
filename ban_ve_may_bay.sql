@@ -35,17 +35,18 @@ CREATE TABLE Passenger (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-CREATE TABLE Flight (
-  FlightID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  thoidiem_den datetime NOT NULL,
-  thoidiem_di datetime NOT NULL,
-  diem_xuatphat varchar(50) NOT NULL,
-  diem_den varchar(50) NOT NULL,
-  tong_thoi_gian varchar(20) NOT NULL,
-  gia_ve int(11) NOT NULL,
-  trang_thai varchar(20) DEFAULT NULL,
-  ghi_chu varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `flight` (
+  `FlightID` int(11) NOT NULL,
+  `thoidiem_den` datetime NOT NULL,
+  `thoidiem_di` datetime NOT NULL,
+  `diem_xuatphat` varchar(50) NOT NULL,
+  `diem_den` varchar(50) NOT NULL,
+  `tong_thoi_gian` varchar(20) NOT NULL,
+  `gia_ve` int(11) NOT NULL,
+  `trang_thai` varchar(20) DEFAULT NULL,
+  `ghi_chu` varchar(50) DEFAULT NULL,
+  `hinh_anh` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- loại vé như khứ hồi, 1 chiều  
