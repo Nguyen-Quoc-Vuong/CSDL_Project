@@ -19,7 +19,9 @@
         <form action="menu.php" method = "post"></form>
       <div class="row">
         <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center; color : red;">
-          <strong>WARNING! : 16 Tháng 10 2023, 23:00 GMT+7: </strong> Thay đổi kế hoạch khai thác tại các sân bay khu vực Bắc Trung Bộ và Trung Trung Bộ <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <strong>WARNING! : 16 Tháng 10 2023, 23:00 GMT+7:             
+          </strong> Thay đổi kế hoạch khai thác tại các sân bay khu vực Bắc Trung Bộ và Trung Trung Bộ
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>
     </div>
@@ -59,7 +61,7 @@
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Mua vé và sản phẩm khác </a>
                       <ul class="dropdown-content">
                         <li>
-                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="timve.php">Mua ve</a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#">Another action</a>
