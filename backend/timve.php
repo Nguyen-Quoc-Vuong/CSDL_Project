@@ -93,10 +93,6 @@
             <input type="radio" name="tickettype" value="Multiple Destinations" id="multiple-destinations-radio-button">
             <label for="multiple-destinations-radio-button" class="radio-button">Multiple Destinations</label>
           </div>
-
-
-
-
             <div class="row mb-3">
                 <div class="col">
                     <label for="departureCity">Departure City:</label>
@@ -180,9 +176,6 @@
                                 echo $e -> getMessage();
                             }
                         ?>
-                        <!-- <option value="Economy">Economy</option>
-                        <option value="Business">Business</option>
-                        <option value="First Class">First Class</option> -->
                     </select>
                 </div>
             </div>
