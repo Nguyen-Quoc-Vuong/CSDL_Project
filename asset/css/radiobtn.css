@@ -1,0 +1,22 @@
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio-button {
+    position: relative;
+    color: #c6c6c6;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 0.8 em;
+    border: 3px solid #0980a0;
+    padding: 1em 2em;
+    border-radius: 0.5em;
+}
+
+.radio-button::before {
+    content: "";
+    height: 2em;
+    width: 2em;
+}
+
