@@ -27,22 +27,14 @@ INSERT INTO TravelClass (TravelClassCode, so_ve, he_so_gia_ve) VALUES
 CREATE TABLE Passenger (
   PassengerID INT AUTO_INCREMENT PRIMARY KEY,
   sdt VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
   city VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
-  FOREIGN KEY (PassengerID) REFERENCES Users(UsersID) ON UPDATE CASCADE
+  FOREIGN KEY (PassengerID) REFERENCES Users(UsersID) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- loại vé như khứ hồi, 1 chiều  
-CREATE TABLE `tbl_danhmuc` (
-  `id_danhmuc` int NOT NULL primary  key,
-  `tendanhmuc` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO tbl_danhmuc(id_danhmuc, tendanhmuc) VALUES
-(1, 'Một chiều'),
-(2, 'Khứ hồi');
 
 CREATE TABLE Flight (
   FlightID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -55,10 +47,20 @@ CREATE TABLE Flight (
   gia_ve int(11) NOT NULL,
   trang_thai varchar(20) DEFAULT NULL,
   ghi_chu varchar(50) DEFAULT NULL, 
-  id_danhmuc int not null ,
-  FOREIGN KEY (id_danhmuc) REFERENCES tbl_danhmuc(id_danhmuc) ON UPDATE CASCADE
+  id_danhmuc int not null 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  COLLATE=utf8mb4_unicode_ci;
 
+
+
+-- loại vé như khứ hồi, 1 chiều  
+CREATE TABLE `tbl_danhmuc` (
+  `id_danhmuc` int NOT NULL primary  key,
+  `tendanhmuc` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO tbl_danhmuc(id_danhmuc, tendanhmuc) VALUES
+(1, 'Một chiều'),
+(2, 'Khứ hồi');
 
 -- phương thức thanh toán: ATM, QR, Thẻ tín dụng
 CREATE TABLE PaymentMethod (
@@ -87,8 +89,8 @@ CREATE TABLE Payment (
   PaymentMethodID INT NOT NULL,
   PaymentAmount DECIMAL(10,2) NOT NULL,
   PaymentStatusID INT NOT NULL,
-  FOREIGN KEY (PaymentMethodID) REFERENCES PaymentMethod(PaymentMethodID)  ON UPDATE CASCADE,
-  FOREIGN KEY (PaymentStatusID) REFERENCES PaymentStatus(PaymentStatusID)  ON UPDATE CASCADE
+  FOREIGN KEY (PaymentMethodID) REFERENCES PaymentMethod(PaymentMethodID) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (PaymentStatusID) REFERENCES PaymentStatus(PaymentStatusID) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE BookingStatus (
@@ -112,12 +114,12 @@ CREATE TABLE Booking (
   FlightID INT NOT NULL,
   TravelClassID INT NOT NULL,
   PaymentID INT NOT NULL,
-  FOREIGN KEY (PassengerID) REFERENCES Passenger(PassengerID) ON UPDATE CASCADE,
-  FOREIGN KEY (BookingStatusID) REFERENCES     BookingStatus(BookingStatusID) ON UPDATE CASCADE,
-  FOREIGN KEY (id_danhmuc) REFERENCES tbl_danhmuc(id_danhmuc) ON UPDATE CASCADE,
-  FOREIGN KEY (FlightID) REFERENCES Flight(FlightID) ON UPDATE CASCADE,
-  FOREIGN KEY (TravelClassID) REFERENCES TravelClass(TravelClassID) ON UPDATE CASCADE,
-  FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID) ON UPDATE CASCADE
+  FOREIGN KEY (PassengerID) REFERENCES Passenger(PassengerID) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (BookingStatusID) REFERENCES     BookingStatus(BookingStatusID) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (id_danhmuc) REFERENCES tbl_danhmuc(id_danhmuc) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (FlightID) REFERENCES Flight(FlightID) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (TravelClassID) REFERENCES TravelClass(TravelClassID) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `cities` (
