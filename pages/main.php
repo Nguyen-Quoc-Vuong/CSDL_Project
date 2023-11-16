@@ -48,10 +48,10 @@
             } else {
                 $tam = ''; 
             }
-            if($tam == 'thongtinhanhtrinh') {
-                include("main/thongtinhanhtrinh.php"); 
-            } elseif($tam=='muavevasanphamkhac'){
-                include("main/muavevasanphamkhac.php"); 
+            if($tam == 'danhmucsanpham') {
+                include("main/danhmuc.php"); 
+            } elseif($tam=='giohang'){
+                include("main/giohang.php"); 
             } else {
                 include("main/index.php"); 
             }

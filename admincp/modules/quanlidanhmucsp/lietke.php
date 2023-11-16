@@ -1,5 +1,5 @@
 <?php 
-    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY thutu DESC"; 
+    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC"; 
     $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp); 
 ?>
 <p>Liet ke danh muc san pham</p>
