@@ -1,3 +1,19 @@
+<?php
+    if(isset($_COOKIE['FlightID'])) {
+      $FlightID = $_COOKIE['FlightID'];
+    }
+    var_dump($FlightID);
+    // echo "<br>Get<br>";
+    // var_dump($_GET);
+    // echo "<br>Post<br>";
+    // var_dump($_POST);
+    // echo "<br>";
+    
+    echo '<pre>';
+    print_r($_COOKIE);
+    echo '</pre>';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,3 +51,14 @@
   </form>
 </body>
 </html>
+<?php
+
+if (isset($_POST['submit'])) {
+    // get number of Passengers
+    $sql_numOfPassengers = "SELECT COUNT(*) as num from passenger WHERE 1;";
+    $res = mysqli_query($conn, $sql_numOfPassengers);
+    $numOfPassengers = mysqli_fetch_array($res)['num'];
+    // 
+    
+  }   
+?>

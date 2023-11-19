@@ -51,7 +51,7 @@
             }
            }else{
             
-            $sql = "INSERT INTO users (username, email, password) VALUES ( ?, ?, ? )";
+            $sql = "INSERT INTO users (fullname, email, password) VALUES ( ?, ?, ? )";
             $stmt = mysqli_stmt_init($conn);
             $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
             if ($prepareStmt) {

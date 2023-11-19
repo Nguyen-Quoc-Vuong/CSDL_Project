@@ -30,4 +30,37 @@ button:hover {
   .form-group {
     margin-bottom: 20px;
   }
+
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label[for="roundTrip"] {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  label[for="oneWay"] {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  label[for="multiCity"] {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .checked {
+    border: 1px solid black;
+  }
+  
   

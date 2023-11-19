@@ -1,3 +1,79 @@
+
+
+<!-- <?php
+          //list available flight 
+            try {
+              $listOfFlight = array(array());
+
+              require_once "../helper/connect_dtb.php";
+              $diem_xuatphat = $_POST['departureCity'];
+              $diem_den = $_POST['arrivalCity'];
+              $thoidiem_den = date("Y/m/d",strtotime($_POST['returnDate']));
+              $thoidiem_di = $_POST['departureDate'];
+
+              $sql = "SELECT FlightID FROM flight 
+              WHERE diem_den = \"$diem_den\"
+              AND diem_xuatphat = \"$diem_xuatphat\"
+              AND thoidiem_den <= \"$thoidiem_den 00:00:00\"
+              AND thoidiem_di >= \"$thoidiem_di 23:59:59\";";
+
+              // echo $sql;
+              $result = mysqli_query($conn, $sql);
+
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                  //dem so ve 
+                  $FlightID = $row['FlightID'];
+                  $travelClass = $_POST['seatingPreference'];
+                  $sql1 = "SELECT COUNT(*) as num FROM booking JOIN travelclass WHERE booking.FlightID = \"$FlightID\" AND travelclass.TravelClassCode = \"$travelClass\";";
+                  $soldTicket = mysqli_query($conn, $sql1);
+                  $num = (int)mysqli_fetch_array($soldTicket)['num'];
+
+                  //so ve toi da ung voi travelclass
+                  $sql2 = "SELECT so_ve FROM travelclass WHERE TravelClassCode = \"$travelClass\"; ";
+                  $capacity = mysqli_query($conn, $sql2);
+                  $numOfSeats = (int)mysqli_fetch_array($capacity)['so_ve'];
+                  
+                  //neu ve chua full
+                  if ($num < $numOfSeats) {
+                    //tao form cho user pick
+                      //lay thong tin ve flight
+                      $sql3 = "SELECT * FROM flight WHERE FlightID = \"$FlightID\";";
+                      $info = mysqli_query($conn, $sql3);
+                      $flightInfo = mysqli_fetch_array($info);
+                      array_push($listOfFlight, array('FlightID'=>$FlightID,'travelClass'=>$travelClass));
+                  }
+                }
+              }
+              echo '<pre>';
+              print_r($listOfFlight);
+              echo '</pre>';
+              // setcookie('listOfFlight',$listOfFlight, 86400, '/');
+
+            }catch(Exception $e) {
+              echo $e->getMessage();
+            }
+          ?> -->
+
+<?php
+// setcookie('FlightID','123',time()- 86400);
+// setcookie('username', 'John Doe', time()- 3600);
+
+  try {
+    if(isset($_POST['myInput'])) {
+      setcookie('FlightID',$FlightID,86400,'/');
+    }
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
+
+//setcookie('travelClass',$travelClass,86400,'/');
+//}
+echo '<pre>';
+    print_r($_COOKIE);
+    echo '</pre>';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +83,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <img src="https://www.vietnamairlines.com/Content/VietnamAirlines/en/common/img/logo-vietnamairlines.svg" alt="Vietnam Airlines">
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Book</a></li>
-          <li><a href="#">Manage</a></li>
-          <li><a href="#">Sky Pass</a></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
   <main>
     <div class="container">
       <div class="flight-information">
@@ -34,9 +93,7 @@
           <div class="card-body">
 
           <?php
-            // echo '<pre>';
-            // print_r($_POST);
-            // echo '</pre>'; 
+          //list available flight 
             try {
               require_once "../helper/connect_dtb.php";
               $diem_xuatphat = $_POST['departureCity'];
@@ -61,6 +118,7 @@
                 while ($row = mysqli_fetch_array($result)) {
                   //dem so ve 
                   $FlightID = $row['FlightID'];
+                  
                   $travelClass = $_POST['seatingPreference'];
                   $sql1 = "SELECT COUNT(*) as num FROM booking JOIN travelclass WHERE booking.FlightID = \"$FlightID\" AND travelclass.TravelClassCode = \"$travelClass\";";
                   $soldTicket = mysqli_query($conn, $sql1);
@@ -77,8 +135,18 @@
                       //lay thong tin ve flight
                       $sql3 = "SELECT * FROM flight WHERE FlightID = \"$FlightID\";";
                       $info = mysqli_query($conn, $sql3);
-                      $flightInfo = mysqli_fetch_array($info);
+                      $flightInfo = mysqli_fetch_array($info);           
+                    
                     ?>
+                    <?php
+                      if(isset($_POST['sumbit'])) {
+                        session_start();
+                        $_SESSION["FlightID"] = $FlightID;
+                        header("Location: temp.php");
+                        die();
+                      }
+                    ?>
+                    <form method ="post" action= "muave.php">
                     
                     <div class="tab-pane fade" id="flight-pane">
                       <div class="card">
@@ -119,16 +187,17 @@
                               <tr>
                                 <td></td>
                                 <td>
-                                  <form method ="post" action= "nhapthongtin.php">
-                                    <button type="submit" class="btn btn-primary">Book now</button>
-                                  </form>
+                                    <button type="submit" class="btn btn-primary" name="submit">Book now</button>
                                 </td>
+                              
                               </tr>
                             </tbody>
                           </table>
                         </div>
                       </div>
                     </div>
+                    </form>
+                   
                     <?php
                   }
                 }
@@ -144,30 +213,6 @@
       </div>
     </div>
   </main>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Vietnam Airlines</h2>
-          <p>...</p>
-        </div>
-        <div class="col-md-4">
-          <h2>Contact Us</h2>
-          <p>...</p>
-        </div>
-        <div class="col-md-4">
-          <h2>Social Media</h2>
-          <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Instagram</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>
 
-<h1>Heading</h1>
