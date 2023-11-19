@@ -1,92 +1,46 @@
+<style>
+  .card {
+    height: 100%; /* Set a fixed height for the card */
+  }
+
+  .card img {
+    object-fit: cover; /* Ensure the image covers the entire container */
+    height: 100%; /* Make the image fill the container height */
+    width: 100%; /* Make the image fill the container width */
+  }
+</style>
+
+<?php 
+  $sql_pro = "SELECT * FROM flight, tbl_danhmuc where flight.id_danhmuc = tbl_danhmuc.id_danhmuc order by flight.FlightID DESC limit 10 "; 
+  $query_pro = mysqli_query($mysqli, $sql_pro); 
+?>
 <div class="line-wrapper">
-    <H1>THIS IS INDEX</H1>
+  <H1>THIS IS INDEX</H1>
   <div class="line"></div>
   <h4 class="text">Các chuyến bay của chúng tôi</h4>
   <div class="line"></div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/quangbinh.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Phú Yên</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
+    <?php  
+      while($row = mysqli_fetch_array($query_pro)) {
+    ?>
+      <div class="col-md-3 mb-1">
+        <div class="card">
+          <?php 
+          $ten_cot_tieu_de = isset($row['ten_cot_tieu_de']) ? $row['ten_cot_tieu_de'] : '';
+          $ten_cot_noi_dung = isset($row['ten_cot_noi_dung']) ? $row['ten_cot_noi_dung'] : '';
+          ?>
+          <img src="admincp/modules/quanlisp/uploads/<?php echo $row['hinhanh'] ?>" class="card-img-top img-thumbnail" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><?php echo $ten_cot_tieu_de; ?></h5>
+            <p class="card-text"><?php echo $ten_cot_noi_dung; ?></p>
+            <a href="#" class="btn btn-outline-primary">Chi tiết</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/dienbien.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Hà Nội - Điện Biên</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/quêm.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Gia Lai</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/hoacaido.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Hoa Cải Đỏ</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" style="margin-top : 10px">
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/thanhhoa.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Thanh Hóa</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/vinh.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Vinh</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/quangninh.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Quảng Ninh</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%;">
-        <img src="img/câmuau.jpeg" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"> Hà Nội - Cà Mau</h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-outline-primary">Chi tiết</a>
-        </div>
-      </div>
-    </div>
+    <?php 
+      }
+    ?>
   </div>
 </div>
