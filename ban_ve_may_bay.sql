@@ -28,7 +28,6 @@ CREATE TABLE Passenger (
   PassengerID INT AUTO_INCREMENT PRIMARY KEY,
   namePassenger varchar(128) NOT NULL,
   sdt VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
   city VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
@@ -61,6 +60,12 @@ CREATE TABLE Flight (
   id_danhmuc int not null,
   FOREIGN KEY (id_danhmuc) REFERENCES tbl_danhmuc(id_danhmuc) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO flight (hinhanh, thoidiem_den, thoidiem_di, diem_xuatphat, diem_den, tong_thoi_gian, gia_ve, trang_thai, ghi_chu, id_danhmuc) VALUES
+('1700380357_dalat.webp', '2001-01-01 00:00:00', '2001-12-12 00:00:00', 'Hà Nội', 'Đà Lạt', '1:30', 1500000, '1', 'không', 1),
+('1700380466_condao.jpeg', '2023-11-15 13:40:00', '2023-11-27 15:00:00', 'Đà Nẵng', 'Côn Đảo', '1:30', 1500000, '1', 'không', 2),
+('1700380550_ninhbinh.jpeg', '2023-11-19 13:00:00', '2023-11-19 19:00:00', 'Gia Lai', 'Hà Nội', '1:20', 1000000, '1', 'không', 1),
+('1700380940_chuLai.jpeg', '2023-01-12 15:00:00', '2023-01-12 19:00:00', 'Hà Nội', 'Chu Lai', '1:10', 1000000, '1', 'không', 2);
 
 
 -- phương thức thanh toán: ATM, QR, Thẻ tín dụng
