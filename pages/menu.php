@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row row1">
     <div class="col-md-4" style="display : flex">
@@ -99,4 +100,6 @@
           <li><a href="index.php?quanli=giohang">Liên hệ</a></li>
         </ul>
       </div>
+</div>
+  </div>
 </div>
