@@ -1,8 +1,12 @@
+
 <?php
 session_start();
 if (!isset($_SESSION["user"])) {
 header("Location: login.php");
 }
+if (isset($_SESSION['UserID'])) {
+    $UserID = $_SESSION['UserID'];
+  }
 ?>
 <?php
 require_once "../helper/connect_dtb.php";
@@ -12,6 +16,16 @@ echo '</pre>';
 // echo count($_POST)/5;
 $listAddSql = array();
 //require_once 'nhapthongtin.php';
+
+//insert data into passenger table
+if (isset($_SESSION['UserID'])) {
+    $UserID = $_SESSION['UserID'];
+    $FlightID = $_SESSION['FlightID'];
+    $numOfPassengers = (int)$_SESSION['numOfPass'];
+    $amount = (int)$_SESSION['price'] ;
+    $travelClass = $_SESSION['travelClass'];
+    $currentPassID = $_SESSION['currentPassID'];
+  }
 if (isset($_POST)) {
     $numOfPassenger = count($_POST)/5;
     for($i = 1; $i <= $numOfPassenger; $i++) {
@@ -21,19 +35,12 @@ if (isset($_POST)) {
         $city = $_POST['city'.$i];
         $country = $_POST['country'.$i];
         
+        $currentPassID++;
         $sql = "INSERT INTO `passenger` (`PassengerID`, `namePassenger`, `sdt`, `address`, `city`, `country`, `UserID`) 
-        VALUES (NULL, '$name', '$phone', '$address', '$city', '$country', '2');";
+        VALUES ($currentPassID, '$name', '$phone', '$address', '$city', '$country', '$UserID');";
         echo $sql.'<br>';
-
-        $result = mysqli_query($conn, $sql);
-        
+        $result = mysqli_query($conn, $sql);    
     }
-}
-
-?>
-<?php
-if(isset($_POST)) {
-    $amount = $_POST['price']; 
 }
 ?>
 
@@ -58,6 +65,8 @@ if(isset($_POST)) {
             </div>
             <div class="form-group">
                 <input name='price' type='hidden' value =<?php echo $amount; ?>>
+                <input name='paymentMethodID' type='hidden' value ='2'>
+                <input name='FlightID' type='hidden' value=<?php echo $FlightID ?>>
                 <button type="submit" name="pay" class="btn btn-primary">Thanh toán</button>
             </div>
         </form>

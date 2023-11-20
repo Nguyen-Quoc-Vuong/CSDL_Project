@@ -1,13 +1,37 @@
-<!-- <?php
-// $amount = $_POST['amount']; 
-// $account = $_POST['account'];
+<?php
+session_start();
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+require_once "../helper/connect_dtb.php";
 
+if (!isset($_SESSION["user"])) {
+header("Location: login.php");
+}
+if (isset($_SESSION['UserID'])) {
+  $UserID = $_SESSION['UserID'];
+}
 $qr_image = "../img/qr.jpg"; 
 
-if (isset($_POST['pay'])) {
-    $option = $_POST['option'];
+if (isset($_SESSION['UserID'])) {
+    $UserID = $_SESSION['UserID'];
+    $FlightID = $_SESSION['FlightID'];
+    $numOfPassengers = (int)$_SESSION['numOfPass'];
+    $amount = (int)$_SESSION['price'] ;
+    $travelClass = $_SESSION['travelClass'];
+    $currentPaymentID = $_SESSION['currentPaymentID'];
+    $currentPassID = $_SESSION['currentPassID'];
+    $currentBookingID = $_SESSION['currentBookingID'];
+    $paymentMethodID = $_POST['paymentMethodID'];
+    $paymentStatus = $_POST['option'];
+    $_SESSION['paymentMethodID'] = $paymentMethodID;
+    $_SESSION['paymentStatus'] = $paymentStatus;
 }
-?> -->
+
+?> 
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -54,14 +78,15 @@ if (isset($_POST['pay'])) {
     </style>
 </head>
 <body>
-    <form method="post" action="thanhtoan.php">
+    <form method="post" action="temp.php">
         <div id="overlay"></div>
         <div id='qr-container'>
             <img src='<?php echo $qr_image; ?>' alt='QR code'>
             <p>Số tài khoản: <?php echo 10000; ?></p>
             <button type='submit' name='back' class='btn btn-secondary'>Quay lại</button>
-            <button type='button' class='btn btn-primary'>Xác nhận</button>
+            <button type='submit' name='confirm' class='btn btn-primary'>Xác nhận</button>
         </div>
     </form>
 </body>
 </html>
+

@@ -3,6 +3,9 @@ session_start();
 if (!isset($_SESSION["user"])) {
 header("Location: login.php");
 }
+if (isset($_SESSION['UserID'])) {
+  $UserID = $_SESSION['UserID'];
+}
 ?>
 <link rel="stylesheet" href="../asset/css/muave.css">
 
@@ -11,11 +14,33 @@ header("Location: login.php");
             $listOfFlight = array(array());
 
             require_once "../helper/connect_dtb.php";
+            $sql = "SELECT COUNT(PassengerID) as num FROM `passenger` WHERE 1";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
+            $currentPassID = $row['num'];
+            $_SESSION['currentPassID'] = $currentPassID;
+
+            $sql = "SELECT count(PaymentID) as num FROM `payment` WHERE 1";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
+            $currentPaymentID = $row['num'];
+            $_SESSION['currentPaymentID'] = $currentPaymentID;
+
+            $sql = "SELECT count(DISTINCT BookingID) as num FROM `booking` WHERE 1";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
+            $currentBookingID = $row['num'];
+            $_SESSION['currentBookingID'] = $currentBookingID;
+
             $diem_xuatphat = $_POST['departureCity'];
             $diem_den = $_POST['arrivalCity'];
             $thoidiem_den = date("Y/m/d",strtotime($_POST['returnDate']));
             $thoidiem_di = $_POST['departureDate'];
             $numOfPass = $_POST['passengers'];
+            $travelClass = $_POST['seatingPreference'];
+
+            $_SESSION['numOfPass'] = $numOfPass;
+            $_SESSION['travelClass'] = $travelClass;
 
             $sql = "SELECT FlightID FROM flight 
             WHERE diem_den = \"$diem_den\"
@@ -41,7 +66,7 @@ header("Location: login.php");
               while ($row = mysqli_fetch_array($result)) {
                 //dem so ve 
                 $FlightID = $row['FlightID'];
-                $travelClass = $_POST['seatingPreference'];
+                
                 $sql1 = "SELECT COUNT(*) as num FROM booking JOIN travelclass WHERE booking.FlightID = \"$FlightID\" AND travelclass.TravelClassCode = \"$travelClass\";";
                 $soldTicket = mysqli_query($conn, $sql1);
                 $num = (int)mysqli_fetch_array($soldTicket)['num'];
@@ -71,15 +96,14 @@ header("Location: login.php");
                       <td>$status</td>   
                       <td>$ ".$price."</td>
                     ";
-
+                    
                     echo " <td>
                     <form action='nhapthongtin.php' method='post'>
-                    <input name='flight_id' type='hidden' value=".$FlightID.">
+                      <input name='FlightID' type='hidden' value=".$FlightID.">
                       <input name='numOfPass' type='hidden' value=".$numOfPass.">
                       <input name='price' type='hidden' value=".$price.">
                       <input name='ret_date' type='hidden' value=".$thoidiem_den.">
-                      <input name='class' type='hidden' value=".$travelClass.">
-                      <input name='price' type='hidden' value =".$price.">
+                      <input name='travelClass' type='hidden' value=".$travelClass.">
                       <button name='book_but' type='submit' 
                       class='btn btn-success mt-0'>
                       </button>

@@ -3,16 +3,27 @@ session_start();
 if (!isset($_SESSION["user"])) {
 header("Location: login.php");
 }
+if (isset($_SESSION['UserID'])) {
+  $_SESSION['FlightID'] = $_POST['FlightID'];
+  $_SESSION['price'] = $_POST['price'];
+  $UserID = $_SESSION['UserID'];
+  $FlightID = $_SESSION['FlightID'];
+  $numOfPassengers = (int)$_SESSION['numOfPass'];
+  $price = (int)$_SESSION['price'] ;
+  $travelClass = $_SESSION['travelClass'];
+}
 ?>
 <link rel="stylesheet" href="../asset/css/bootstrap.css">
 
 <?php
 // var_dump($_POST);
   $listOfPassSQL = array();
-  if(isset($_POST)) {
-    $numOfPassengers = (int)$_POST['numOfPass'];
-    $price = (int)$_POST['price'];
-  }  
+  // if(isset($_POST)) {
+  //   $numOfPassengers = (int)$_POST['numOfPass'];
+  //   $price = (int)$_POST['price'];
+  //   $FlightID = $_POST['FlightID'];
+  //   $travelClass = $_POST['travelClass'];
+  // }  
   ?>
   <form action="thanhtoan.php" method="post">
   <?php
@@ -52,6 +63,8 @@ header("Location: login.php");
     </div>";
   }
   echo "
+  <input name='travelClass' type='hidden' value=".$travelClass.">
+  <input name='FlightID' type='hidden' value='.$FlightID.'>
   <input name='price' type='hidden' value =".$price.">
   <button type='submit' class='btn btn-primary'>Book now</button>
   </form>"
