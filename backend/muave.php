@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+header("Location: login.php");
+}
+?>
 <link rel="stylesheet" href="../asset/css/muave.css">
 
 <?php
@@ -73,6 +79,7 @@
                       <input name='price' type='hidden' value=".$price.">
                       <input name='ret_date' type='hidden' value=".$thoidiem_den.">
                       <input name='class' type='hidden' value=".$travelClass.">
+                      <input name='price' type='hidden' value =".$price.">
                       <button name='book_but' type='submit' 
                       class='btn btn-success mt-0'>
                       </button>

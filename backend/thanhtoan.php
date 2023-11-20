@@ -1,6 +1,40 @@
 <?php
-$amount = 1000000; 
-$account = "123456789";
+session_start();
+if (!isset($_SESSION["user"])) {
+header("Location: login.php");
+}
+?>
+<?php
+require_once "../helper/connect_dtb.php";
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+// echo count($_POST)/5;
+$listAddSql = array();
+//require_once 'nhapthongtin.php';
+if (isset($_POST)) {
+    $numOfPassenger = count($_POST)/5;
+    for($i = 1; $i <= $numOfPassenger; $i++) {
+        $name = $_POST['name'.$i];
+        $phone = $_POST['phone'.$i];
+        $address = $_POST['address'.$i];
+        $city = $_POST['city'.$i];
+        $country = $_POST['country'.$i];
+        
+        $sql = "INSERT INTO `passenger` (`PassengerID`, `namePassenger`, `sdt`, `address`, `city`, `country`, `UserID`) 
+        VALUES (NULL, '$name', '$phone', '$address', '$city', '$country', '2');";
+        echo $sql.'<br>';
+
+        $result = mysqli_query($conn, $sql);
+        
+    }
+}
+
+?>
+<?php
+if(isset($_POST)) {
+    $amount = $_POST['price']; 
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +57,7 @@ $account = "123456789";
                 </select>
             </div>
             <div class="form-group">
+                <input name='price' type='hidden' value =<?php echo $amount; ?>>
                 <button type="submit" name="pay" class="btn btn-primary">Thanh toán</button>
             </div>
         </form>
