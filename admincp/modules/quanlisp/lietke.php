@@ -3,8 +3,8 @@
     FlightID  DESC"; 
     $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp); 
 ?>
-<p>Liet ke danh muc san pham</p>
-<table style = " width:100%" border="1" style ="border-collapse: collapse;">
+<h2 style="text-align: center; color: #0098D8;">Liệt kê danh mục chuyến </h2>
+<table class="viptable" style = " width:100%" border="1" style ="border-collapse: collapse;">
 <tr>
     <th>Id</th>
     <th>Hình ảnh</th>
@@ -35,8 +35,8 @@ while($row = mysqli_fetch_array($query_lietke_sp)) {
         <td><?php echo ($row['trang_thai'])  ?></td>
         <td><?php echo ($row['ghi_chu'])  ?></td>
         <td>
-    <a href="modules/quanlisp/xuly.php?idsanpham=<?php echo $row['FlightID']?>">Xóa</a> | 
-    <a href="?action=quanlisp&query=sua&idsanpham=<?php echo $row['FlightID']?>">Sửa</a> 
+    <a href="modules/quanlisp/xuly.php?idsanpham=<?php echo $row['FlightID']?>"class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">Xóa</a> 
+    <a href="?action=quanlisp&query=sua&idsanpham=<?php echo $row['FlightID']?>"class="btn btn-primary">Sửa</a> 
 </td>
 
     </tr>
@@ -44,3 +44,8 @@ while($row = mysqli_fetch_array($query_lietke_sp)) {
 }
 ?>
 </table>
+<style>
+    table.viptable th,table.viptable td {
+        text-align: center;
+    }
+</style>

@@ -1,4 +1,6 @@
-<p>Thêm sản phẩm</p>
+<!-- Sử dụng thuộc tính color trong CSS -->
+<h2 style="text-align: center; color: #0098D8;">Thêm chuyến bay</h2>
+
 <table border="1px" width="100%" style="border-collapse: collapse;">
     <form method="POST" action="modules/quanlisp/xuly.php" enctype="multipart/form-data">
         <tr>
@@ -40,7 +42,7 @@
 
         
         <tr>
-            <td>Danh mục sản phẩm</td>
+            <td>Danh mục vé</td>
             <td>
               <select name="danhmuc">
                 <?php 
@@ -55,18 +57,9 @@
               </select>
             </td>
         </tr>
-
-        <!-- <tr>
-            <td>Tình trạng</td>
-            <td>
-              <select name="tinhtrang">
-                <option value = "1">Kích hoạt</option>
-                <option value = "0">Ẩn</option>
-              </select>
-            </td>
-        </tr> -->
         <tr>
             <td colspan="2"><input type="submit" name="themsanpham" value="Thêm sản phẩm" /></td>
         </tr>
     </form>
 </table>
+<hr style="border: 2px solid #808080; width: 112%; margin-left:-160px">
