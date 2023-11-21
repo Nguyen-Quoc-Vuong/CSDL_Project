@@ -26,7 +26,7 @@ if (isset($_SESSION['UserID'])) {
         $paymentStatusID = 2;
     }
     date_default_timezone_set('Asia/Ho_Chi_Minh');
-    $date = date('Y-m-d H:i:s a', time());
+    $date = date('YYYY-MM-DD hh:mm:ss', time());
 
     $currentPaymentID++;
     $sql = "INSERT INTO `payment` (`PaymentID`, `PaymentDate`, `PaymentMethodID`, `PaymentAmount`, `PaymentStatusID`) VALUES ($currentPaymentID, '$date', '$paymentMethodID', '$amount', '$paymentStatusID');";
