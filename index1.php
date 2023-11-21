@@ -77,7 +77,8 @@ if (isset($_SESSION['UserID'])) {
                   <div class="navbar-nav ml-auto py-0">
                      <a href="index.html" class="nav-item nav-link active">Home</a>
                      <a href="#myFooter" class="nav-item nav-link">Contact</a>
-                     <a href="backend/login.php" class="nav-item nav-link">Đăng nhập</a>
+                     <a href="index.php" class="nav-item nav-link">Đăng xuẩt</a>
+                     <a href=""class="nav-item nav-link">Lịch sử</a>
                      <!-- <a href=""></a> -->
                   </div>
                </div>
@@ -95,7 +96,7 @@ if (isset($_SESSION['UserID'])) {
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                        <a href="backend/login.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <a href="backend/muave.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                      </div>
                   </div>
                </div>
@@ -105,7 +106,7 @@ if (isset($_SESSION['UserID'])) {
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                        <a href="backend/login.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <a href="backend/muave.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                      </div>
                   </div>
                </div>
@@ -254,16 +255,16 @@ if (isset($_SESSION['UserID'])) {
                <p class="section-title my-3" title="Payment partner">Payment partner</p>
                <div class="d-flex flex-nowrap flex-md-wrap overflow-auto align-items-center my-3">
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/ncb.png" width="80" alt="NCB">
+                     <img src="../icon/ncb.png" width="80" alt="NCB">
                   </div>
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/vnpay.jpg" width="80" alt="Vnpay">
+                     <img src="../icon/vnpay.jpg" width="80" alt="Vnpay">
                   </div>
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/agribank.png" width="80" alt="Argibank">
+                     <img src="../icon/agribank.png" width="80" alt="Argibank">
                   </div>
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/vietcombank.png" width="80" alt="Vietcombank">
+                     <img src="../icon/vietcombank.png" width="80" alt="Vietcombank">
                   </div>
                </div>
             </div>
