@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `booking`
 --
+create database ban_ve_may_bay;
+use ban_ve_may_bay;
 
 CREATE TABLE `booking` (
   `BookingID` int(11) NOT NULL,
@@ -38,12 +40,6 @@ CREATE TABLE `booking` (
   `PaymentID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES
-(1, '2023-11-20 23:01:53', 8, 4, 1, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -62,10 +58,8 @@ CREATE TABLE `bookingstatus` (
 
 INSERT INTO `bookingstatus` (`BookingStatusID`, `BookingStatusCode`) VALUES
 (1, 'Pending'),
-(2, 'Confirmed'),
-(3, 'Cancelled'),
-(4, 'Paid'),
-(5, 'Partially Paid');
+(2, 'Paid'),
+(3, 'Partially Paid');
 
 -- --------------------------------------------------------
 
@@ -148,19 +142,6 @@ CREATE TABLE `passenger` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `passenger`
---
-
-INSERT INTO `passenger` (`PassengerID`, `namePassenger`, `sdt`, `address`, `city`, `country`, `UserID`) VALUES
-(1, 'a', '0962873111', 'aaa', '', '', 5),
-(2, 'a', '0962873111', 'aaa', '', '', 5),
-(3, 'a', '0962873111', 'aaa', '', '', 5),
-(4, 'a', '0962873111', 'aaa', '', '', 5),
-(5, 'a', '0962873111', 'aaa', '', '', 5),
-(6, 'a', '0962873111', 'aaa', '', '', 5),
-(7, 'a', '0962873111', 'aaa', '', '', 5),
-(8, 'a', '0962873111', 'aaa', '', '', 5),
-(9, 'a', '0962873111', 'aaa', '', '', 5);
 
 -- --------------------------------------------------------
 
@@ -173,15 +154,10 @@ CREATE TABLE `payment` (
   `PaymentDate` datetime NOT NULL,
   `PaymentMethodID` int(11) NOT NULL,
   `PaymentAmount` decimal(10,2) NOT NULL,
-  `PaymentStatusID` int(11) NOT NULL
+  `PaymentStatusID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`PaymentID`, `PaymentDate`, `PaymentMethodID`, `PaymentAmount`, `PaymentStatusID`) VALUES
-(1, '2023-11-20 23:01:53', 2, 1000000.00, 1);
 
 -- --------------------------------------------------------
 
@@ -269,7 +245,7 @@ INSERT INTO `travelclass` (`TravelClassID`, `TravelClassCode`, `so_ve`, `he_so_g
 --
 
 CREATE TABLE `users` (
-  `UsersID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
   `fullname` varchar(128) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -280,7 +256,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UsersID`, `fullname`, `email`, `password`, `role`) VALUES
+INSERT INTO `users` (`UserID`, `fullname`, `email`, `password`, `role`) VALUES
 (1, 'Admin', 'admin@gmail.com', '$2y$10$.Xx2S2TIBoVCGDLAOoWlwudwWDSja75DR78wF7ef.aiWGTvX7ngQi', 1),
 (2, 'Nguyễn Quốc Vương', 'vuong@gmail.com', '123456', 0),
 (5, 'nguyen van a', 'test1@gmail.com', '123456', 0);
@@ -317,9 +293,6 @@ ALTER TABLE `flight`
 --
 -- Indexes for table `passenger`
 --
-ALTER TABLE `passenger`
-  ADD PRIMARY KEY (`PassengerID`),
-  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `payment`
@@ -327,8 +300,8 @@ ALTER TABLE `passenger`
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`PaymentID`),
   ADD KEY `PaymentMethodID` (`PaymentMethodID`),
-  ADD KEY `PaymentStatusID` (`PaymentStatusID`);
-
+  ADD KEY `PaymentStatusID` (`PaymentStatusID`),
+  ADD KEY `UserID` (`UserID`);
 --
 -- Indexes for table `paymentmethod`
 --
@@ -357,8 +330,11 @@ ALTER TABLE `travelclass`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UsersID`);
+  ADD PRIMARY KEY (`UserID`);
 
+ALTER TABLE `passenger`
+  ADD PRIMARY KEY (`PassengerID`),
+  ADD KEY `UserID` (`UserID`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -397,7 +373,7 @@ ALTER TABLE `travelclass`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UsersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -424,14 +400,15 @@ ALTER TABLE `flight`
 -- Constraints for table `passenger`
 --
 ALTER TABLE `passenger`
-  ADD CONSTRAINT `passenger_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UsersID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `passenger_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
   ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`PaymentMethodID`) REFERENCES `paymentmethod` (`PaymentMethodID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`PaymentStatusID`) REFERENCES `paymentstatus` (`PaymentStatusID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`PaymentStatusID`) REFERENCES `paymentstatus` (`PaymentStatusID`) ON UPDATE CASCADE
+  ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
