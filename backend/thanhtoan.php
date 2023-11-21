@@ -24,11 +24,27 @@ if (isset($_SESSION['UserID'])) {
     $numOfPassengers = (int)$_SESSION['numOfPass'];
     $amount = (int)$_SESSION['price'] ;
     $travelClass = $_SESSION['travelClass'];
-    $currentPassID = $_SESSION['currentPassID'];
   }
 if (isset($_POST)) {
-    $numOfPassenger = count($_POST)/5;
-    for($i = 1; $i <= $numOfPassenger; $i++) {
+    $sql = "SELECT COUNT(PassengerID) as num FROM `passenger` WHERE 1";
+    $result = mysqli_query($conn, $sql); 
+    $row = mysqli_fetch_array($result);
+    $currentPassID = $row['num'];
+    $_SESSION['currentPassID'] = $currentPassID;
+
+    $sql = "SELECT COUNT(PaymentID) as num FROM `payment` WHERE 1";
+    $result = mysqli_query($conn, $sql); 
+    $row = mysqli_fetch_array($result);
+    $currentPaymentID = $row['num'];
+    $_SESSION['currentPaymentID'] = $currentPaymentID;
+
+    $sql = "SELECT COUNT(BookingID) as num FROM `booking` WHERE 1";
+    $result = mysqli_query($conn, $sql); 
+    $row = mysqli_fetch_array($result);
+    $currentBookingID = $row['num'];
+    $_SESSION['currentBookingID'] = $currentBookingID;
+
+    for($i = 1; $i <= $numOfPassengers; $i++) {
         $name = $_POST['name'.$i];
         $phone = $_POST['phone'.$i];
         $address = $_POST['address'.$i];
@@ -61,6 +77,7 @@ if (isset($_POST)) {
                 <select name="option" id="option" class="form-control">
                     <option value="full">Thanh toán toàn bộ tiền</option>
                     <option value="part">Thanh toán 1 phần tiền (50%)</option>
+                    <option value="debt">Trả sau</option>
                 </select>
             </div>
             <div class="form-group">

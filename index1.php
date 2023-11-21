@@ -96,7 +96,7 @@ if (isset($_SESSION['UserID'])) {
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                        <a href="backend/muave.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <a href="./backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                      </div>
                   </div>
                </div>
@@ -106,7 +106,7 @@ if (isset($_SESSION['UserID'])) {
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                        <a href="backend/muave.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <a href="./backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                      </div>
                   </div>
                </div>
