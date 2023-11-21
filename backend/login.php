@@ -29,7 +29,7 @@
                       header("Location: admin.php");
                     } else {
                       $_SESSION["user"] = "yes";
-                      $_SESSION["UserID"] = $user['UsersID'];
+                      $_SESSION["UserID"] = $user['UserID'];
                       header("Location: menu.php");
                       die();
                     }

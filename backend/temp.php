@@ -30,18 +30,18 @@ if (isset($_SESSION['UserID'])) {
     $date = date('YYYY-MM-DD hh:mm:ss', time());
 
     $currentPaymentID++;
-    $sql = "INSERT INTO `payment` (`PaymentID`, `PaymentDate`, `PaymentMethodID`, `PaymentAmount`, `PaymentStatusID`) VALUES ($currentPaymentID, '$date', '$paymentMethodID', '$amount', '$paymentStatusID');";
+    $sql = "INSERT INTO `payment` (`PaymentID`, `PaymentDate`, `PaymentMethodID`, `PaymentAmount`, `PaymentStatusID`, `UserID`) VALUES ($currentPaymentID, '$date', '$paymentMethodID', '$amount', '$paymentStatusID', '$UserID');";
     $result = mysqli_query($conn, $sql);
     
     $currentBookingID++;
     for($i = 1; $i <= $numOfPassengers; $i++) {
         $currentPassID++;
-        if ($travelClass = 'Thương gia') {
+        if ($travelClass == 'Thương gia') {
             $travelClassID = 2;
         } else {
             $travelClassID = 1;
         }
-        $sql = "INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES ('$currentBookingID', '$date', '$currentPassID', '4', '$id_danhmuc', '$FlightID', '$travelClassID', '$currentPaymentID');";
+        $sql = "INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES ('$currentBookingID', '$date', '$currentPassID', '1', '$id_danhmuc', '$FlightID', '$travelClassID', '$currentPaymentID');";
         echo $sql.'<br>';
         $result = mysqli_query($conn, $sql);
     }
