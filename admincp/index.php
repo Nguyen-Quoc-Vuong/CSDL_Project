@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
    <head>
       <title>Manage Staff</title>
@@ -75,4 +76,5 @@
       <script src="../config/AdminResponsive.js"></script>
       <script type="module" src="../config/ManageAirline.js"></script>
    </body>
+
 </html>
