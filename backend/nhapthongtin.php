@@ -4,16 +4,33 @@ if (!isset($_SESSION["user"])) {
 header("Location: login.php");
 }
 if (isset($_SESSION['UserID'])) {
-  $_SESSION['FlightID'] = $_POST['FlightID'];
   $_SESSION['price'] = $_POST['price'];
+  $_SESSION['FlightID'] = $_POST['FlightID'];
+  $_SESSION['tbl_danhmuc'] = $_POST['tripType'];
+  $numOfPassengers = (int)$_SESSION['numOfPass'];
+
+  if ($_SESSION['tbl_danhmuc'] == 'oneWay') {
+    $_SESSION['id_danhmuc'] = 1;
+    $price = (int)$_SESSION['price'] * $numOfPassengers;
+  } else {
+    $_SESSION['id_danhmuc'] = 2;
+    $price = (int)$_SESSION['price'];
+    $price *= 2 * $numOfPassengers;
+    $_SESSION['price'] = $price;
+  }
+
   $UserID = $_SESSION['UserID'];
   $FlightID = $_SESSION['FlightID'];
-  $numOfPassengers = (int)$_SESSION['numOfPass'];
-  $price = (int)$_SESSION['price'] ;
+
   $travelClass = $_SESSION['travelClass'];
+  if ($travelClass = 'Thương gia') {
+    $price *= 1.5;
+    $_SESSION['price'] = $price;
+  }
 }
 ?>
 <link rel="stylesheet" href="../asset/css/bootstrap.css">
+<link rel="stylesheet" href="../asset/css/style.css">
 
 <?php
 // var_dump($_POST);

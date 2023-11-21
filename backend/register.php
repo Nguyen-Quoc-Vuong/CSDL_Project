@@ -20,7 +20,7 @@
            $password = $_POST["password"];
            $passwordRepeat = $_POST["repeat_password"];
            
-           $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+           $passwordHash = $password;
 
            $errors = array();
            

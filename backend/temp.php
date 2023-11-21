@@ -18,6 +18,7 @@ if (isset($_SESSION['UserID'])) {
     $currentBookingID = $_SESSION['currentBookingID'];
     $paymentMethodID = $_SESSION['paymentMethodID'];
     $paymentStatus = $_SESSION['paymentStatus'];
+    $id_danhmuc = $_SESSION['id_danhmuc'];
 }
 //add data to payment   
     if($paymentStatus == 'full') {
@@ -35,7 +36,12 @@ if (isset($_SESSION['UserID'])) {
     $currentBookingID++;
     for($i = 1; $i <= $numOfPassengers; $i++) {
         $currentPassID++;
-        $sql = "INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES ('$currentBookingID', '$date', '$currentPassID', '4', '1', '$FlightID', '1', '$currentPaymentID');";
+        if ($travelClass = 'Thương gia') {
+            $travelClassID = 2;
+        } else {
+            $travelClassID = 1;
+        }
+        $sql = "INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES ('$currentBookingID', '$date', '$currentPassID', '4', '$id_danhmuc', '$FlightID', '$travelClassID', '$currentPaymentID');";
         echo $sql.'<br>';
         $result = mysqli_query($conn, $sql);
     }

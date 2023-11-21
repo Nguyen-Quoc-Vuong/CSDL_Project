@@ -19,6 +19,7 @@ if (isset($_SESSION['UserID'])) {
     <title>Document</title>
     <link rel="stylesheet" href="../asset/css/menu.css">
     <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.css">
+    <link rel="stylesheet" href="../asset/css/style.css">
 
   </head>
   
@@ -100,9 +101,6 @@ if (isset($_SESSION['UserID'])) {
             <label for="roundTrip">Khứ hồi</label>
             <input type="radio" name="tripType" value="oneWay" id="oneWay">
             <label for="oneWay">Một chiều</label>
-            <input type="radio" name="tripType" value="multiCity" id="multiCity">
-            <label for="multiCity">Nhiều chặng</label>
-            
             <div class="row mb-3">
                 <div class="col">
                     <label for="departureCity">Departure City:</label>

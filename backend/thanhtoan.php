@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="../asset/css/style.css">
 <?php
 session_start();
 if (!isset($_SESSION["user"])) {
