@@ -26,11 +26,11 @@
                     session_start();
                     if ($user["role"] == 1) {
                       $_SESSION["admin"] = "yes";
-                      header("Location: admin.php");
+                      header("Location: /../admincp/index.php");
                     } else {
                       $_SESSION["user"] = "yes";
-                      $_SESSION["UserID"] = $user['UserID'];
-                      header("Location: menu.php");
+                      $_SESSION["UserID"] = $user['UsersID'];
+                      header("Location: /../index1.php");
                       die();
                     }
                     
