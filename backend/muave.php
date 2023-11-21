@@ -8,6 +8,7 @@ if (isset($_SESSION['UserID'])) {
 }
 ?>
 <link rel="stylesheet" href="../asset/css/muave.css">
+<link rel="stylesheet" href="../asset/css/style.css">
 
 <?php
           //list available flight 
@@ -41,6 +42,11 @@ if (isset($_SESSION['UserID'])) {
 
             $_SESSION['numOfPass'] = $numOfPass;
             $_SESSION['travelClass'] = $travelClass;
+
+            if(isset($_POST['tripType'])) {
+              $_SESSION['tbl_danhmuc'] = $_POST['tripType']; 
+            }
+
 
             $sql = "SELECT FlightID FROM flight 
             WHERE diem_den = \"$diem_den\"
@@ -104,6 +110,7 @@ if (isset($_SESSION['UserID'])) {
                       <input name='price' type='hidden' value=".$price.">
                       <input name='ret_date' type='hidden' value=".$thoidiem_den.">
                       <input name='travelClass' type='hidden' value=".$travelClass.">
+                      <input name='tripType' type='hidden' value=".$_POST['tripType'].">
                       <button name='book_but' type='submit' 
                       class='btn btn-success mt-0'>
                       </button>
