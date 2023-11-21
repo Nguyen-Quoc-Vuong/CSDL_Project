@@ -15,12 +15,12 @@
     <div class="container-fluid">
     <?php
         if (isset($_POST["submit"])) {
-           $fullname = $_POST["username"];
+           $fullname = $_POST["fullname"];
            $email = $_POST["email"];
            $password = $_POST["password"];
            $passwordRepeat = $_POST["repeat_password"];
            
-           $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+           $passwordHash = $password;
 
            $errors = array();
            
@@ -51,7 +51,7 @@
             }
            }else{
             
-            $sql = "INSERT INTO users (username, email, password) VALUES ( ?, ?, ? )";
+            $sql = "INSERT INTO users (fullname, email, password) VALUES ( ?, ?, ? )";
             $stmt = mysqli_stmt_init($conn);
             $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
             if ($prepareStmt) {
@@ -83,7 +83,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  name="username"
+                  name="fullname"
                 />
               </div>
 

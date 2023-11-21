@@ -22,11 +22,18 @@
             $result = mysqli_query($conn, $sql);
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
             if ($user) {
-                if (password_verify($password, $user["password"])) {
+                if ($password == $user["password"]) {
                     session_start();
-                    $_SESSION["user"] = "yes";
-                    header("Location: menu.php");
-                    die();
+                    if ($user["role"] == 1) {
+                      $_SESSION["admin"] = "yes";
+                      header("Location: admin.php");
+                    } else {
+                      $_SESSION["user"] = "yes";
+                      $_SESSION["UserID"] = $user['UserID'];
+                      header("Location: menu.php");
+                      die();
+                    }
+                    
                 }else{
                     echo "<div class='alert alert-danger'>Email hoặc mật khẩu không đúng</div>";
                 }

@@ -1,4 +1,3 @@
-<div class="clear"></div>
 <div class="main">
     <?php
         if(isset($_GET['action']) && isset($_GET['query'])) {
@@ -9,7 +8,7 @@
             $query =''; 
         }
         if($tam ==  'quanlidanhmucsanpham' && $query=='them') {
-            echo "$tam, $query"; 
+            // echo "$tam, $query"; 
             include("modules/quanlidanhmucsp/them.php"); 
             include("modules/quanlidanhmucsp/lietke.php"); 
         } elseif($tam ==  'quanlidanhmucsanpham' && $query=='sua') {
@@ -20,6 +19,9 @@
             include("modules/quanlisp/lietke.php"); 
         } elseif($tam =='quanlisp' && $query=='sua') {
             include("modules/quanlisp/sua.php"); 
+        } elseif($tam =='quanliAdmin' && $query=='them') {
+            include("modules/quanliAdmin/them.php"); 
+            include("modules/quanliAdmin/lietke.php"); 
         }
          else {
             include ("modules/dashboard.php"); 

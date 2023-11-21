@@ -1,0 +1,66 @@
+form {
+  background-color: #f6f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+.form-group {
+  margin-bottom: 10px;
+}
+label {
+  color: #636f7a;
+  font-weight: bold;
+}
+select, input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+}
+button {
+  background-color: #0980a0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #006280;
+}
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label[for="roundTrip"] {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  label[for="oneWay"] {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  label[for="multiCity"] {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .checked {
+    border: 1px solid black;
+  }
+  
+  

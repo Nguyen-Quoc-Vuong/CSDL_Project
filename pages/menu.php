@@ -1,10 +1,11 @@
+
 <div class="container">
   <div class="row row1">
     <div class="col-md-4" style="display : flex">
       <img src="img/VNA_logo_vn.webp" alt="" style="height: 80px;width:50%">
       <img src="img/skyteam.webp" alt="" style="height: 40px; width: 50px ;margin-top : 15px">
     </div>
-    <div class="col-md-8">
+    <!-- <div class="col-md-8">
       <nav class="navbar" style="background-color: #e3f2fd;">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
@@ -76,5 +77,29 @@
         </nav>
       </nav>
     </div>
+  </div>
+</div> -->
+
+                <?php 
+                $sql_danhmuc = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC"; 
+                $query_danhmuc = mysqli_query($mysqli,$sql_danhmuc ); 
+                ?>
+<div class ="col-md-8">
+<div class = "menu">
+        <ul class = "list_menu">
+          <li><a href="index.php">Trang chủ</a></li>
+          <?php 
+           while($row_danhmuc = mysqli_fetch_array($query_danhmuc)) {
+            ?>
+          <li><a href="index.php?quanli=danhmucsanpham&id=<?php echo $row_danhmuc['id_danhmuc'] ?> "><?php echo $row_danhmuc['tendanhmuc'] ?></a></li>
+          <?php 
+           }
+           ?>
+          <li><a href="index.php?quanli=giohang">Giỏ hàng</a></li>
+          <li><a href="index.php?quanli=giohang">Tin tức</a></li>
+          <li><a href="index.php?quanli=giohang">Liên hệ</a></li>
+        </ul>
+      </div>
+</div>
   </div>
 </div>
