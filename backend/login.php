@@ -30,7 +30,7 @@
                     } else {
                       $_SESSION["user"] = "yes";
                       $_SESSION["UserID"] = $user['UserID'];
-                      header("Location: menu.php");
+                      header("Location: ../index1.php");
                       die();
                     }
                     
