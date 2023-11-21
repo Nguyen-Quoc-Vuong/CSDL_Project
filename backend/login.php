@@ -29,8 +29,8 @@
                       header("Location: /../admincp/index.php");
                     } else {
                       $_SESSION["user"] = "yes";
-                      $_SESSION["UserID"] = $user['UsersID'];
-                      header("Location: /../index1.php");
+                      $_SESSION["UserID"] = $user['UserID'];
+                      header("Location: ../index1.php");
                       die();
                     }
                     

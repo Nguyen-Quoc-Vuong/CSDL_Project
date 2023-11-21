@@ -3,10 +3,12 @@ session_start();
 if (!isset($_SESSION["user"])) {
 header("Location: login.php");
 }
-if (isset($_SESSION['UserID'])) {
+if (isset($_POST)) {
   $_SESSION['price'] = $_POST['price'];
   $_SESSION['FlightID'] = $_POST['FlightID'];
   $_SESSION['tbl_danhmuc'] = $_POST['tripType'];
+  $_SESSION['numOfPass'] = $_POST['numOfPass'];
+  $_SESSION['travelClass'] = $_POST['travelClass'];
   $numOfPassengers = (int)$_SESSION['numOfPass'];
 
   if ($_SESSION['tbl_danhmuc'] == 'oneWay') {
@@ -23,7 +25,7 @@ if (isset($_SESSION['UserID'])) {
   $FlightID = $_SESSION['FlightID'];
 
   $travelClass = $_SESSION['travelClass'];
-  if ($travelClass = 'Thương gia') {
+  if ($travelClass != 'Phổ') {
     $price *= 1.5;
     $_SESSION['price'] = $price;
   }
