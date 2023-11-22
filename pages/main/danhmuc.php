@@ -28,7 +28,7 @@ if(isset($_GET['id'])) {
           <div class="card-body">
             <h5 class="card-title"><?php echo $ten_cot_tieu_de; ?></h5>
             <p class="card-text"><?php echo $ten_cot_noi_dung; ?></p>
-            <a href="#" class="btn btn-outline-primary">Chi tiết</a>
+            <a href="#" class="btn btn-outline-primary">Mua vé</a>
           </div>
         </div>
       </div>

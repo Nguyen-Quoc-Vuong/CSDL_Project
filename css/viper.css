@@ -17,6 +17,8 @@
 .line-wrapper {
     display: flex;
     align-items: center;
+    margin-left : 123px ; 
+    margin-right : 123px; 
 }
 
 .line {

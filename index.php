@@ -10,6 +10,7 @@ if (isset($_SESSION['UserID'])) {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
+      <link rel="stylesheet" href="css/viper.css">
       <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
       <title>TRAVELER - Free Travel Website Template</title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -27,7 +28,6 @@ if (isset($_SESSION['UserID'])) {
       <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
       <!-- Customized Bootstrap Stylesheet -->
       <link href="css/style.css" rel="stylesheet">
-      <link rel="stylesheet" href="css/viper.css">
    </head>
    <body>
       <div class="container-fluid bg-light pt-3 d-none d-lg-block">
@@ -123,10 +123,6 @@ if (isset($_SESSION['UserID'])) {
          </div>
       </div>
       <!-- Carousel End -->
-
-      <!-- details -->
-
-
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -144,6 +140,8 @@ if (isset($_SESSION['UserID'])) {
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
       <div class="wrapper"> <?php
          include ("admincp/config/config.php"); 
+         include("pages/menu.php");
+         include("pages/main.php"); 
          ?> </div>
       <div class="container py-4">
          <div class="row">
