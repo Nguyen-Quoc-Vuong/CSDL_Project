@@ -1,46 +1,8 @@
 $(".nav-bar").html(`
 <ul class="nav-links-container">
-    <li class="nav-link">
-        <a class="logo" href="index.html">
-            <i class="fas fa-plane"></i>
-        </a>
-    </li>   
-    <li class="nav-link">
-        <a href="thi_cong.html">
-            <span>Thông Báo</span>
-            <i class="far fa-bell"></i>
-        </a>
-    </li>
-    <li id="management" class="nav-link">
-        <a href="../admin/ManageFlight.php">
-            <span>Quản lý</span>
-            <i class="fas fa-tasks"></i>
-        </a>
-    </li>
-    <li id="login-register" class="nav-link">
-        <a href="login-register.html">
-            <span>Đăng Nhập</span>
-            <i class="far fa-user"></i>
-        </a>
-    </li>
-    <li id="logout" class="nav-link">
-        <a href="../php/LoginRegister/Logout.php">
-            <span>Đăng xuất</span>
-            <i class="fas fa-sign-out-alt"></i>
-        </a>
-    </li>
-    <li id="orders" class="nav-link">
-        <a href="member-orders.html">
-            <span>Đơn hàng</span>
-            <i class="fas fa-shopping-cart"></i>
-        </a>
-    </li>
 </ul>
 <div id="username">
-    <a href="user-info.html" class="username">
-        <span></span>
-        <i class="far fa-user"></i>
-    </a>
+    
 </div>`)
 $(".description").html(`
 <div class="info-1">
@@ -83,29 +45,30 @@ $(".description").html(`
 </div>
 <div class="info">
     <ul>
-        <li style="font-weight: bold; font-size: 20px;">CÔNG TY CỔ PHẦN TOÀN KHỈ VIỆT NAM</li>
-        <li>Copyright © 2015 - 2020 toankhi.com.vn</li>
+        <li style="font-weight: bold; font-size: 20px;">HÃNG HÀNG KHÔNG QUỐC GIA VIỆT NAM</li>
+        <li>Copyright © 2023 vietnamairline@.gmail.com.vn</li>
         <li>
             <i class="fas fa-phone"></i> 0349.966.760 <i class="far fa-envelope"></i> toankhi@toankhi.com.vn
         </li>
-        <li>Thời gian làm việc: 8:30 - 17:15 (thứ 2 - thứ 6)</li>
+        <li>Thời gian làm việc: 7:30 - 17:15 (thứ 2 - chủ nhật)</li>
         <li><img width="140px" src="../icon/bocongthuong.png"></li>
     </ul>
     <ul>
-        <li>Chịu trách nhiệm nội dung: ông Toàn Khỉ</li>
-        <li>Toàn bộ quy chế, quy định giao dịch chung được đăng tải trên website áp dụng từ ngày 1/10/2020.
-            toankhi.com không bán xe trực tiếp, quý khách mua xe xin vui lòng liên hệ trực tiếp người đăng tin.
+        <li>Quản lí và điều hành bởi bộ giao thông vận tải</li>
+        <li>Toàn bộ quy chế, quy định giao dịch chung được đăng tải trên website áp dụng từ ngày 1/10/2023.
+            theo quy định bay và an toàn bay của thủ tướng chính phủ
         </li>
     </ul>
     </div>
 <div class="info">
     <ul>
         <li>Địa chỉ trụ sở chính</li>
-        <li>766 Võ Văn Kiệt, Phường 1, Quận 5, Thành phố Hồ Chí Minh</li>
+        <li>766 Ba Đình, Hà Nội</li>
     </ul>
     <ul>
-        <li>Văn phòng TP. Hồ Chí Minh</li>
-        <li>Tầng 14, Toà nhà Vietcombank, số 5 Công Trường Mê Linh, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh
+        <li>Văn phòng trên khắp 63 tỉnh thành</li>
+        <li>Địa chỉ tổng đài: Tầng 14, Toà nhà Vietcombank, số 5 Công Trường Mê Linh, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh
         </li>
+        
     </ul>
 </div>`)

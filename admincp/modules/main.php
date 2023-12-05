@@ -17,7 +17,12 @@
         }elseif($tam =='quanlisp' && $query=='them') {
             include("modules/quanlisp/them.php"); 
             include("modules/quanlisp/lietke.php"); 
-        } elseif($tam =='quanlisp' && $query=='sua') {
+        } 
+        elseif($tam =='quanlicity' && $query=='them') {
+            include("modules/quanlicity/them.php"); 
+            include("modules/quanlicity/lietke.php"); 
+        }
+         elseif($tam =='quanlisp' && $query=='sua') {
             include("modules/quanlisp/sua.php"); 
         } elseif($tam =='quanliAdmin' && $query=='them') {
             include("modules/quanliAdmin/them.php"); 

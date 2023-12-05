@@ -54,7 +54,8 @@ ul.list_menu li {
 }
 
 .tien_ich {
-    margin: 30px auto; 
+    padding: 30px 0;
+    /* margin: 30px auto;  */
      text-align: center;
     display: flex;
     justify-content: space-between; /* Để các hình ảnh cách nhau một khoảng cố định */

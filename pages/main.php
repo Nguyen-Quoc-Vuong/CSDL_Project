@@ -15,7 +15,7 @@
 </style>
 
 <!-- <div class="main"> -->
-
+<div class="box-container">
 <div class="tien_ich  container">
       <!-- <div class="row"> -->
       <div class="col-xs-2"></div>
@@ -88,6 +88,7 @@
       <div class="col-xs-2"></div>
       <!-- </div> -->
     </div>
+</div>
     <div class="maincontent">
         <?php
             if(isset($_GET['quanli'])) {
@@ -104,7 +105,7 @@
             }
         ?>
     </div>
-<div class="line-wrapper">
+<div class="line-wrapper" style="margin-left : 295px ; margin-right: 295px; ">
   <div class="line"></div>
   <h4 class="text">Thông tin thêm</h4>
   <div class="line"></div>

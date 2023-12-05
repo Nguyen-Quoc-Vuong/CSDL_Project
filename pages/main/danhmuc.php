@@ -11,7 +11,7 @@ if(isset($_GET['id'])) {
   mysqli_data_seek($query_pro, 0);
 }
 ?>
-<h3>this is danh muc: <?php echo isset($row_title['tendanhmuc']) ? $row_title['tendanhmuc'] : ''; ?></h3>
+<h3> <?php echo isset($row_title['tendanhmuc']) ? $row_title['tendanhmuc'] : ''; ?></h3>
 <div class="container">
   <?php 
   if(isset($query_pro)) {

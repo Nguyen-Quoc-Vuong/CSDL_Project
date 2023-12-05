@@ -11,15 +11,16 @@
 </style>
 
 <?php 
-  $sql_pro = "SELECT * FROM flight, tbl_danhmuc where flight.id_danhmuc = tbl_danhmuc.id_danhmuc order by flight.FlightID DESC limit 10 "; 
+  $sql_pro = "SELECT * FROM flight, tbl_danhmuc where flight.id_danhmuc = tbl_danhmuc.id_danhmuc order by flight.FlightID DESC limit 16 "; 
   $query_pro = mysqli_query($mysqli, $sql_pro); 
 ?>
-<div class="line-wrapper">
+<div class="line-wrapper" style="margin-left : 295px ; margin-right:295px">
 
   <div class="line"></div>
   <h4 class="text">Những điểm hẹn</h4>
   <div class="line"></div>
 </div>
+<div id="box-container">
 <div class="container">
 <div class="row">
     <?php  
@@ -47,8 +48,13 @@
   </div>
 
 </div>
+</div>
 <style>
   .card {
     height: 65%;
+  }
+
+  #box-container {
+    background-color: #fefe;
   }
 </style>

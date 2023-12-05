@@ -78,7 +78,7 @@ if (isset($_SESSION['UserID'])) {
                      <a href="index.html" class="nav-item nav-link active">Home</a>
                      <a href="#myFooter" class="nav-item nav-link">Contact</a>
                      <a href="index.php" class="nav-item nav-link">Đăng xuẩt</a>
-                     <a href=""class="nav-item nav-link">Lịch sử</a>
+                     <a href="backend/history.php"class="nav-item nav-link">Lịch sử</a>
                      <!-- <a href=""></a> -->
                   </div>
                </div>
@@ -139,11 +139,13 @@ if (isset($_SESSION['UserID'])) {
       <script src="js/main.js"></script>
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-      <div class="wrapper"> <?php
+      <div class="wrapper"style="margin-top: -45px;
+    background: #fefe;"> <?php
          include ("admincp/config/config.php"); 
          include("pages/menu.php");
          include("pages/main.php"); 
          ?> </div>
+         <div class="newClass" style="background-color: #999999; margin-bottom:-31px">
       <div class="container py-4">
          <div class="row">
             <div class="col-md-12 my-2">
@@ -270,7 +272,8 @@ if (isset($_SESSION['UserID'])) {
             </div>
          </div>
       </div>
-      <div id="myFooter" class="container-fluid" style="margin-top : 30px"> 
+      </div>
+      <div id="myFooter" class="container-fluid" style="margin-top : 30px; width:101%; padding-left:0px"> 
          <?php
             include("backend/footer.php") ;  
             ?>
@@ -313,4 +316,27 @@ if (isset($_SESSION['UserID'])) {
    padding: 30px 0;
    max-width: 100%;
    }
+
+   /* ghi đè bootstrap */
+   .crs-item {
+      background-color: rgba(0, 0, 0, 0.5);
+   }
+  
+   .carousel-caption {
+      background: none;
+   }
+
+   
+   .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Đảm bảo nền màu đè lên ảnh */
+}
+
+
 </style>

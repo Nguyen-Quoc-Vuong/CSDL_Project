@@ -7,7 +7,7 @@
    <?php 
       while($row = mysqli_fetch_array($query_sua_sp)) {
       ?>
-   <form method="POST" action="modules/quanliAdmin/xuly.php?idsanpham=<?php echo $row['UsersID'] ?>" enctype="multipart/form-data">
+   <form method="POST" action="modules/quanliAdmin/xuly.php?idsanpham=<?php echo $row['UserID'] ?>" enctype="multipart/form-data">
    <tr>
          <td>Họ và tên</td>
          <td><input type="text" name="fullname" /></td>

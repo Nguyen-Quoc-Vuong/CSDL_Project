@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-   <head>
+   <head>+
       <title>Manage Staff</title>
       <meta charset="utf-8">
       <link rel="stylesheet" href="../style/admin.css">

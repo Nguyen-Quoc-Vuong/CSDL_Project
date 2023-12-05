@@ -24,14 +24,17 @@ if (isset($_SESSION['UserID'])) {
     $currentPassID = $_SESSION['currentPassID'];
   }
 if (isset($_POST)) {
-    for($i = 1; $i <= $numOfPassengers; $i++) {
+    $numOfPassenger = count($_POST)/5;
+    for($i = 1; $i <= $numOfPassenger; $i++) {
         $name = $_POST['name'.$i];
         $phone = $_POST['phone'.$i];
         $address = $_POST['address'.$i];
+        $city = $_POST['city'.$i];
+        $country = $_POST['country'.$i];
         
         $currentPassID++;
-        $sql = "INSERT INTO `passenger` (`PassengerID`, `namePassenger`, `sdt`, `address`, `UserID`) 
-        VALUES ($currentPassID, '$name', '$phone', '$address', '$UserID');";
+        $sql = "INSERT INTO `passenger` (`PassengerID`, `namePassenger`, `sdt`, `address`, `city`, `country`, `UserID`) 
+        VALUES ($currentPassID, '$name', '$phone', '$address', '$city', '$country', '$UserID');";
         
         $result = mysqli_query($conn, $sql);    
     }
@@ -122,36 +125,55 @@ if (isset($_POST)) {
                
             </div> -->
     
-                    <h1>Thanh toán tại đây</h1>
-                    <br>
-                    <br>
-                    <h2>Bạn cần thanh toán số tiền là: <?php echo $amount; ?> đồng</h2>
-                    <br>
-                    <hr style="border: 2px solid #808080; ">
-                    <form method="post" action="qrcode.php">
-                        <div class="form-group">
-                           <br>
-                            <label for="option">Phương thức thanh toán:</label>
-                            <br>
-                            <br>
-                            <select name="option" id="option" class="form-control">
-                                <option value="full" style="width : 150%">Thanh toán toàn bộ tiền</option>
-                                <option value="part"style="width : 150%">Thanh toán 1 phần tiền (50%)</option>
-                                <option value="debt"style="width : 150%">Trả sau</option>
-                            </select>
+            <?php 
+  for ($i = 1; $i <= $numOfPassengers; $i++) {
+   echo "
+   <div class='container-fluid nhapthongtin mt-5 pb-5'>
+        <div class='container pb-5>
+            <div class='bg-light shadow' style='padding: 30px;'>
+            Passenger $i: <br>
+   <div class='row align-items-center' style='min-height: 60px;'>  
+                    <div class='col-md-12'>
+                        <div class='row'>
+                           <div class='col-md-4'>
+                                <div class='mb-4 mb-md-0'>
+                                    <div  id='name'>
+                                        <input type='text' name='name$i' class='form-control p-4' placeholder='Full Name' >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-md-4'>
+                                <div class='mb-4 mb-md-0'>
+                                    <div id='phone'>
+                                        <input type='text' name='phone$i' class='form-control p-4' placeholder='Phone Number'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-md-4'>
+                                <div class='mb-4 mb-md-0'>
+                                    <div id='address'>
+                                        <input type='text' name='address$i' class='form-control p-4' placeholder='Address' >
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <div class="form-group">
-                           <br>  
-                           <br>
-                            <input name='price' type='hidden' value =<?php echo $amount; ?>>
-                            <input name='paymentMethodID' type='hidden' value ='2'>
-                            <input name='FlightID' type='hidden' value=<?php echo $FlightID ?>>
-                            <button type="submit" name="pay" class="btn btn-primary">Thanh toán</button>
-                        </div>
-                    </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  ";
+  }
+  ?>
+  <div class='container'>
+         <div class = 'row'>
+            <div class='col-md-2'>
+                  <button class='btn btn-primary btn-block' type='submit' style='height: 47px; margin-top: -2px'>Submit</button>
+            </div>
+         </div>
+      </div>
                 <!-- </div> -->
          </div>
       </div>

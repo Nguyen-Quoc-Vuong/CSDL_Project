@@ -1,8 +1,5 @@
 <?php
 session_start();
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
 require_once "../helper/connect_dtb.php";
 if (isset($_SESSION['UserID'])) {
     $UserID = $_SESSION['UserID'];
@@ -16,14 +13,13 @@ if (isset($_SESSION['UserID'])) {
     $paymentMethodID = $_SESSION['paymentMethodID'];
     $id_danhmuc = $_SESSION['id_danhmuc'];
 }
-//add data to payment   
+    //add data to payment   
+    $paymentStatus = $_SESSION['paymentStatus'];
     if($paymentStatus == 'full') {
         $paymentStatusID = 1;
     } else if ($paymentStatus == 'part'){
         $paymentStatusID = 2;
         $amount = (float)$amount/2.0;
-        $_SESSION['Price'] = $amount;
-        
     } else {
         $paymentStatusID = 3;
     }
@@ -35,21 +31,14 @@ if (isset($_SESSION['UserID'])) {
     $result = mysqli_query($conn, $sql);
     
     $currentBookingID++;
+
     for($i = 1; $i <= $numOfPassengers; $i++) {
         $currentPassID++;
-        if ($travelClass != 'Phổ') {
-            $travelClassID = 2;
-        } else {
-            $travelClassID = 1;
-        }
-        $BookingStatusID = 1;
-        if ($paymentStatusID <=2) {
-            $BookingStatusID = $paymentMethodID + 1;
-        } 
-        $sql = "INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES ('$currentBookingID', '$date', '$currentPassID', '$BookingStatusID', '$id_danhmuc', '$FlightID', '$travelClassID', '$currentPaymentID');";
+        $travelClassID = $_SESSION['travelClassID'];
+        
+        $sql = "INSERT INTO `booking` (`BookingID`, `BookingDate`, `PassengerID`, `BookingStatusID`, `id_danhmuc`, `FlightID`, `TravelClassID`, `PaymentID`) VALUES ('$currentBookingID', '$date', '$currentPassID', '$paymentStatusID', '$id_danhmuc', '$FlightID', '$travelClassID', '$currentPaymentID');";
         echo $sql.'<br>';
         $result = mysqli_query($conn, $sql);
     }
-        header("Location: ../index1.php");
-    
+    header("Location: ../index1.php");
 ?>

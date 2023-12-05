@@ -1,12 +1,12 @@
 <?php
 session_start();
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
 require_once "../helper/connect_dtb.php";
 
 if (!isset($_SESSION["user"])) {
-    header("Location: login.php");
+header("Location: login.php");
+}
+if (isset($_SESSION['UserID'])) {
+  $UserID = $_SESSION['UserID'];
 }
 $qr_image = "../img/qr.jpg"; 
 
@@ -14,7 +14,7 @@ if (isset($_SESSION['UserID'])) {
     $UserID = $_SESSION['UserID'];
     $FlightID = $_SESSION['FlightID'];
     $numOfPassengers = (int)$_SESSION['numOfPass'];
-    $amount = (int)$_SESSION['Price'] ;
+    $amount = (int)$_SESSION['price'] ;
     $travelClass = $_SESSION['travelClass'];
     $currentPaymentID = $_SESSION['currentPaymentID'];
     $currentPassID = $_SESSION['currentPassID'];
@@ -24,7 +24,7 @@ if (isset($_SESSION['UserID'])) {
     $_SESSION['paymentMethodID'] = $paymentMethodID;
     $_SESSION['paymentStatus'] = $paymentStatus;
     if ($paymentStatus == "debt") {
-        header("Location: ../index1.php");
+        header("Location: temp.php");
     }
 }
 
@@ -79,7 +79,7 @@ if (isset($_SESSION['UserID'])) {
         <div id="overlay"></div>
         <div id='qr-container'>
             <img src='<?php echo $qr_image; ?>' alt='QR code'>
-            <!-- <p>Bill: <?php echo $amount; ?></p> -->
+            <p>Số tài khoản: <?php echo 10000; ?></p>
             <button type='submit' name='confirm' class='btn btn-primary'>Xác nhận</button>
         </div>
     </form>

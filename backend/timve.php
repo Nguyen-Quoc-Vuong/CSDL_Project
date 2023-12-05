@@ -24,8 +24,8 @@ if (isset($_SESSION['UserID'])) {
       <!-- Font Awesome -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
       <!-- Libraries Stylesheet -->
-      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-      <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+      <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
       <!-- Customized Bootstrap Stylesheet -->
       <link href="css/style.css" rel="stylesheet">
    </head>
@@ -77,7 +77,7 @@ if (isset($_SESSION['UserID'])) {
                   <div class="navbar-nav ml-auto py-0">
                      <a href="index.html" class="nav-item nav-link active">Home</a>
                      <a href="#myFooter" class="nav-item nav-link">Contact</a>
-                     <a href="index.php" class="nav-item nav-link">Đăng xuẩt</a>
+                     <a href="../index.php" class="nav-item nav-link">Đăng xuẩt</a>
                      <a href=""class="nav-item nav-link">Lịch sử</a>
                      <!-- <a href=""></a> -->
                   </div>
@@ -91,22 +91,22 @@ if (isset($_SESSION['UserID'])) {
          <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                  <img class="w-100" src="../img/carousel-1.jpg" alt="Image">
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                        <a href="./backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                  <img class="w-100" src="../img/carousel-2.jpg" alt="Image">
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                        <a href="./backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        
                      </div>
                   </div>
                </div>
@@ -229,7 +229,7 @@ if (isset($_SESSION['UserID'])) {
                                             if (mysqli_num_rows($result) > 0) {
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     ?>
-                                                    <option value="<?php echo $row['travelClassCode'] ?>"><?php echo $row['travelClassCode'] ?></option>
+                                                    <option value="<?php echo $row['travelClassCode'];?>"><?php echo $row['travelClassCode'] ?></option>
                                                     <?php
                                                 }
                                             }
@@ -243,7 +243,7 @@ if (isset($_SESSION['UserID'])) {
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
+                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Search</button>
                     </div>
                 </div>
               </form>
@@ -255,23 +255,19 @@ if (isset($_SESSION['UserID'])) {
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-      <script src="lib/easing/easing.min.js"></script>
-      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-      <script src="lib/tempusdominus/js/moment.min.js"></script>
-      <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-      <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+      <script src="../lib/easing/easing.min.js"></script>
+      <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="../lib/tempusdominus/js/moment.min.js"></script>
+      <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+      <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
       <!-- Contact Javascript File -->
-      <script src="mail/jqBootstrapValidation.min.js"></script>
-      <script src="mail/contact.js"></script>
+      <script src="../mail/jqBootstrapValidation.min.js"></script>
+      <script src="../mail/contact.js"></script>
       <!-- Template Javascript -->
-      <script src="js/main.js"></script>
+      <script src="../js/main.js"></script>
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-      <div class="wrapper"> <?php
-         include ("admincp/config/config.php"); 
-         include("pages/menu.php");
-         include("pages/main.php"); 
-         ?> </div>
+      <div class="wrapper"> </div>
       <div class="container py-4">
          <div class="row">
             <div class="col-md-12 my-2">
@@ -400,12 +396,12 @@ if (isset($_SESSION['UserID'])) {
       </div>
       <div id="myFooter" class="container-fluid" style="margin-top : 30px"> 
          <?php
-            include("backend/footer.php") ;  
+            include("footer.php") ;  
             ?>
       </div>
       <!-- <script src="config/footer.js"></script> -->
       <script src="https://code.jquery.com/jquery-latest.js"></script>
-      <script src="popper.min.js"></script>
+      <script src="../popper.min.js"></script>
       <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
    </body>
 </html>
@@ -441,4 +437,14 @@ if (isset($_SESSION['UserID'])) {
    padding: 30px 0;
    max-width: 100%;
    }
+
+   .booking {
+    position: relative;
+    margin-top: -60px !important;
+    z-index: 1;
+}
+
+   .mb-md-4 {
+      margin-bottom: 22.5rem!important;
+   } 
 </style>

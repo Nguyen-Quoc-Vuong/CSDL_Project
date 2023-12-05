@@ -23,10 +23,11 @@ if (isset($_SESSION['UserID'])) {
   $FlightID = $_SESSION['FlightID'];
 
   $travelClass = $_SESSION['travelClass'];
-  if ($travelClass = 'Thương gia') {
+  if ($travelClass == 'Thương gia') {
     $price *= 1.5;
-    $_SESSION['price'] = $price;
+    
   }
+  $_SESSION['price'] = $price;
 }
 ?>
 
@@ -404,4 +405,7 @@ if (isset($_SESSION['UserID'])) {
    padding: 30px 0;
    max-width: 100%;
    }
+   .container-fluid {
+   padding : 0;
+}
 </style>

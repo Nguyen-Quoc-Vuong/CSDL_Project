@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 if (isset($_SESSION['UserID'])) {
   $UserID = $_SESSION['UserID'];
 } ?>
@@ -10,24 +9,24 @@ if (isset($_SESSION['UserID'])) {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
-      <link rel="stylesheet" href="css/viper.css">
-      <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="../css/viper.css">
+      <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
       <title>TRAVELER - Free Travel Website Template</title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
       <meta content="Free HTML Templates" name="keywords">
       <meta content="Free HTML Templates" name="description">
       <!-- Favicon -->
-      <link href="img/favicon.ico" rel="icon">
+      <link href="../img/favicon.ico" rel="icon">
       <!-- Google Web Fonts -->
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
       <!-- Font Awesome -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
       <!-- Libraries Stylesheet -->
-      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-      <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+      <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
       <!-- Customized Bootstrap Stylesheet -->
-      <link href="css/style.css" rel="stylesheet">
+      <link href="../css/style.css" rel="stylesheet">
    </head>
    <body>
       <div class="container-fluid bg-light pt-3 d-none d-lg-block">
@@ -75,9 +74,10 @@ if (isset($_SESSION['UserID'])) {
                </button>
                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                   <div class="navbar-nav ml-auto py-0">
-                     <a href="index.html" class="nav-item nav-link active">Home</a>
+                     <a href="../index.html" class="nav-item nav-link active">Home</a>
                      <a href="#myFooter" class="nav-item nav-link">Contact</a>
-                     <a href="backend/login.php" class="nav-item nav-link">Đăng nhập</a>
+                     <a href="history.php" class="nav-item nav-link">Lịch sử</a>
+                     <a href="../index.php" class="nav-item nav-link">Đăng xuất</a>
                      <!-- <a href=""></a> -->
                   </div>
                </div>
@@ -90,22 +90,22 @@ if (isset($_SESSION['UserID'])) {
          <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                  <img class="w-100" src="../img/carousel-1.jpg" alt="Image">
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                        <a href="backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <a href="../backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                  <img class="w-100" src="../img/carousel-2.jpg" alt="Image">
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                      <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                         <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                        <a href="backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <a href="../backend/timve.php" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                      </div>
                   </div>
                </div>
@@ -158,6 +158,13 @@ if (isset($_SESSION['UserID'])) {
                 $numOfPass = $_POST['passengers'];
                 $travelClass = $_POST['seatingPreference'];
 
+                if ($travelClass == 'Phổ thông') {
+                  $travelClassID = 1;
+                } else {
+                  $travelClassID = 2;
+                }
+                $_SESSION['travelClassID'] = $travelClassID;
+
                 $_SESSION['numOfPass'] = $numOfPass;
                 $_SESSION['travelClass'] = $travelClass;
 
@@ -185,13 +192,17 @@ if (isset($_SESSION['UserID'])) {
                   <?php
                   if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_array($result)) {
+                     // echo "$travelClass<br>";
+                     
+                     // echo $travelClassID.'<br>';
                       //dem so ve 
                       $FlightID = $row['FlightID'];
-                      $sql1 = "SELECT COUNT(*) as num FROM booking JOIN travelclass WHERE booking.FlightID = \"$FlightID\" AND travelclass.TravelClassCode = \"$travelClass\";";
+                      $sql1 = "SELECT COUNT(PassengerID) as num FROM booking WHERE booking.FlightID = \"$FlightID\" AND TravelClassID = \"$travelClassID\";";
                       $soldTicket = mysqli_query($conn, $sql1);
                       $num = (int)mysqli_fetch_array($soldTicket)['num'];
                       //so ve toi da ung voi travelclass
-                      $sql2 = "SELECT so_ve FROM travelclass WHERE TravelClassCode = \"$travelClass\"; ";
+                      
+                      $sql2 = "SELECT so_ve FROM travelclass WHERE TravelClassID = $travelClassID; ";
                       $capacity = mysqli_query($conn, $sql2);
                       $numOfSeats = (int)mysqli_fetch_array($capacity)['so_ve'];
                       //neu ve chua full
@@ -202,7 +213,7 @@ if (isset($_SESSION['UserID'])) {
                           $info = mysqli_query($conn, $sql3);
                           $flightInfo = mysqli_fetch_array($info);
                           $price = $flightInfo['gia_ve'];
-                          $status = $flightInfo['trang_thai'];
+                          $status = "$num / $numOfSeats";
                           $arrival_time = $flightInfo['thoidiem_den'];
                           $departure_time = $flightInfo['thoidiem_di'];
                           echo "
@@ -241,20 +252,20 @@ if (isset($_SESSION['UserID'])) {
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-      <script src="lib/easing/easing.min.js"></script>
-      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-      <script src="lib/tempusdominus/js/moment.min.js"></script>
-      <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-      <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+      <script src="../lib/easing/easing.min.js"></script>
+      <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="../lib/tempusdominus/js/moment.min.js"></script>
+      <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+      <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
       <!-- Contact Javascript File -->
-      <script src="mail/jqBootstrapValidation.min.js"></script>
-      <script src="mail/contact.js"></script>
+      <script src="../mail/jqBootstrapValidation.min.js"></script>
+      <script src="../mail/contact.js"></script>
       <!-- Template Javascript -->
-      <script src="js/main.js"></script>
+      <script src="../js/main.js"></script>
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
       <div class="wrapper"> <?php
-         include ("admincp/config/config.php"); 
+         // include ("admincp/config/config.php"); 
          ?> </div>
       <div class="container py-4">
          <div class="row">
@@ -367,16 +378,16 @@ if (isset($_SESSION['UserID'])) {
                <p class="section-title my-3" title="Payment partner">Payment partner</p>
                <div class="d-flex flex-nowrap flex-md-wrap overflow-auto align-items-center my-3">
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/ncb.png" width="80" alt="NCB">
+                     <img src="../icon/ncb.png" width="80" alt="NCB">
                   </div>
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/vnpay.jpg" width="80" alt="Vnpay">
+                     <img src="../icon/vnpay.jpg" width="80" alt="Vnpay">
                   </div>
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/agribank.png" width="80" alt="Argibank">
+                     <img src="../icon/agribank.png" width="80" alt="Argibank">
                   </div>
                   <div class="partner-item mb-md-3 mr-4 mr-md-2">
-                     <img src="icon/vietcombank.png" width="80" alt="Vietcombank">
+                     <img src="../icon/vietcombank.png" width="80" alt="Vietcombank">
                   </div>
                </div>
             </div>
@@ -384,12 +395,12 @@ if (isset($_SESSION['UserID'])) {
       </div>
       <div id="myFooter" class="container-fluid" style="margin-top : 30px"> 
          <?php
-            include("backend/footer.php") ;  
+            include("../backend/footer.php") ;  
             ?>
       </div>
       <!-- <script src="config/footer.js"></script> -->
       <script src="https://code.jquery.com/jquery-latest.js"></script>
-      <script src="popper.min.js"></script>
+      <script src="../popper.min.js"></script>
       <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
    </body>
 </html>
@@ -425,4 +436,10 @@ if (isset($_SESSION['UserID'])) {
    padding: 30px 0;
    max-width: 100%;
    }
+
+   .booking {
+    position: relative;
+    margin-top: -60px !important;
+    z-index: 1;
+}
 </style>

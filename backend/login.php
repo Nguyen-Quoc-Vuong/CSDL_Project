@@ -81,7 +81,7 @@
               <div class="form-group user-register">
                 <div class="col-sm-12 col-md-12 col-lg-12 form-item text-center">
                     <br/> Don't Have an Account ? 
-                    <a href="register.php">Resister Now</a>
+                    <a href="register.php">Register Now</a>
                 </div>
             </div>
             </form>

@@ -4,7 +4,6 @@
 if (isset($_SESSION['UserID'])) {
   $UserID = $_SESSION['UserID'];
 } ?>
-<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
@@ -87,7 +86,7 @@ if (isset($_SESSION['UserID'])) {
       <!-- Navbar End -->
       <!-- Carousel Start -->
       <div class="container-fluid p-0">
-         <div id="header-carousel" class="carousel slide" data-ride="carousel">
+         <div id="header-carousel" class="carousel slide crs-item" data-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active">
                   <img class="w-100" src="img/carousel-1.jpg" alt="Image">
@@ -138,12 +137,15 @@ if (isset($_SESSION['UserID'])) {
       <script src="js/main.js"></script>
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-      <div class="wrapper"> <?php
+      <div class="wrapper" style="margin-top: -45px;
+    background: #fefe;"> <?php
          include ("admincp/config/config.php"); 
          include("pages/menu.php");
          include("pages/main.php"); 
          ?> </div>
-      <div class="container py-4">
+
+         <div class="newClass" style="background-color: #999999; margin-bottom:0px">
+         <div class="container py-4">
          <div class="row">
             <div class="col-md-12 my-2">
                <p class="section-title my-3chu" title="Aviation partner">Aviation partner</p>
@@ -269,7 +271,9 @@ if (isset($_SESSION['UserID'])) {
             </div>
          </div>
       </div>
-      <div id="myFooter" class="container-fluid" style="margin-top : 30px"> 
+         </div>
+      
+      <div id="myFooter" class="container-fluid" style="margin-top : -11px"> 
          <?php
             include("backend/footer.php") ;  
             ?>
@@ -312,4 +316,31 @@ if (isset($_SESSION['UserID'])) {
    padding: 30px 0;
    max-width: 100%;
    }
+
+   /* ghi đè bootstrap */
+   .crs-item {
+      background-color: rgba(0, 0, 0, 0.5);
+   }
+  
+   .carousel-caption {
+      background: none;
+   }
+
+   
+   .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Đảm bảo nền màu đè lên ảnh */
+}
+
+.container-fluid {
+   padding : 0;
+}
+
+
 </style>
